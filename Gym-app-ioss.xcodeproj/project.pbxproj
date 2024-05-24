@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4349A6892BFE606400684853 /* workoutVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A6882BFE606400684853 /* workoutVieModel.swift */; };
+		4349A68B2C00CB0400684853 /* PersistanceFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A68A2C00CB0400684853 /* PersistanceFood.swift */; };
+		43B1943F2AC760F5002CF64D /* MainWindow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1943E2AC760F5002CF64D /* MainWindow2.swift */; };
+		43C27BF62BEC3DAE00A73F0F /* ExcerciseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */; };
+		43C27BF82BEC5CCA00A73F0F /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */; };
+		43C27BFA2BEC5EC600A73F0F /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF92BEC5EC600A73F0F /* Food.swift */; };
+		43C27BFC2BF246FE00A73F0F /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BFB2BF246FE00A73F0F /* UserSettings.swift */; };
+		43C27BFE2BF24A7300A73F0F /* FisrtWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BFD2BF24A7300A73F0F /* FisrtWindow.swift */; };
+		43C27C002BF24DEC00A73F0F /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BFF2BF24DEC00A73F0F /* Calories.swift */; };
+		43C27C052BF2D5AC00A73F0F /* Gemini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27C042BF2D5AC00A73F0F /* Gemini.swift */; };
+		43C27C082BF2D5EC00A73F0F /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */; };
+		43C27C0A2BF2D6DD00A73F0F /* geminii.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27C092BF2D6DD00A73F0F /* geminii.swift */; };
+		43C27C0C2BF2DA0200A73F0F /* GenerativeAi-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43C27C0B2BF2DA0200A73F0F /* GenerativeAi-Info.plist */; };
+		43CDA0092A8C479C000BCA3B /* Gym_app_iossApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0082A8C479C000BCA3B /* Gym_app_iossApp.swift */; };
+		43CDA00B2A8C479C000BCA3B /* LogInWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA00A2A8C479C000BCA3B /* LogInWindow.swift */; };
+		43CDA00D2A8C479D000BCA3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CDA00C2A8C479D000BCA3B /* Assets.xcassets */; };
+		43CDA0102A8C479D000BCA3B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CDA00F2A8C479D000BCA3B /* Preview Assets.xcassets */; };
+		43CDA0172A8C491B000BCA3B /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0162A8C491B000BCA3B /* MainWindow.swift */; };
+		43CDA0192A8C49E4000BCA3B /* createUserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0182A8C49E4000BCA3B /* createUserWindow.swift */; };
+		43CDA01B2A8C654E000BCA3B /* questionaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA01A2A8C654E000BCA3B /* questionaire.swift */; };
+		43CDA01D2A8C6858000BCA3B /* finalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA01C2A8C6858000BCA3B /* finalData.swift */; };
+		43CDA0202A8D8444000BCA3B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA01F2A8D8444000BCA3B /* User.swift */; };
+		43CDA0232A8D8547000BCA3B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0222A8D8547000BCA3B /* Constants.swift */; };
+		43CDA0252A8D85A3000BCA3B /* ModalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0242A8D85A3000BCA3B /* ModalType.swift */; };
+		43CDA0272A8D85D8000BCA3B /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0262A8D85D8000BCA3B /* HttpClient.swift */; };
+		43CDA02B2A8D8733000BCA3B /* ExcercisesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA02A2A8D8733000BCA3B /* ExcercisesViewModel.swift */; };
+		43CDA0302A9446C7000BCA3B /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 43CDA02F2A9446C7000BCA3B /* OpenAIKit */; };
+		43CDA0332A9446DA000BCA3B /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43CDA0322A9446DA000BCA3B /* OpenAISwift */; };
+		43CDA0352A944741000BCA3B /* OpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0342A944741000BCA3B /* OpenAI.swift */; };
+		43CDA0372AA56D74000BCA3B /* LogedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0362AA56D74000BCA3B /* LogedInUser.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4349A6882BFE606400684853 /* workoutVieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workoutVieModel.swift; sourceTree = "<group>"; };
+		4349A68A2C00CB0400684853 /* PersistanceFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceFood.swift; sourceTree = "<group>"; };
+		43B1943E2AC760F5002CF64D /* MainWindow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow2.swift; sourceTree = "<group>"; };
+		43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseWindow.swift; sourceTree = "<group>"; };
+		43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		43C27BF92BEC5EC600A73F0F /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		43C27BFB2BF246FE00A73F0F /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		43C27BFD2BF24A7300A73F0F /* FisrtWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FisrtWindow.swift; sourceTree = "<group>"; };
+		43C27BFF2BF24DEC00A73F0F /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
+		43C27C042BF2D5AC00A73F0F /* Gemini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gemini.swift; sourceTree = "<group>"; };
+		43C27C092BF2D6DD00A73F0F /* geminii.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geminii.swift; sourceTree = "<group>"; };
+		43C27C0B2BF2DA0200A73F0F /* GenerativeAi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAi-Info.plist"; sourceTree = "<group>"; };
+		43CDA0052A8C479C000BCA3B /* Gym-app-ioss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gym-app-ioss.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43CDA0082A8C479C000BCA3B /* Gym_app_iossApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gym_app_iossApp.swift; sourceTree = "<group>"; };
+		43CDA00A2A8C479C000BCA3B /* LogInWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInWindow.swift; sourceTree = "<group>"; };
+		43CDA00C2A8C479D000BCA3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43CDA00F2A8C479D000BCA3B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		43CDA0162A8C491B000BCA3B /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		43CDA0182A8C49E4000BCA3B /* createUserWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createUserWindow.swift; sourceTree = "<group>"; };
+		43CDA01A2A8C654E000BCA3B /* questionaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionaire.swift; sourceTree = "<group>"; };
+		43CDA01C2A8C6858000BCA3B /* finalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalData.swift; sourceTree = "<group>"; };
+		43CDA01F2A8D8444000BCA3B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		43CDA0222A8D8547000BCA3B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		43CDA0242A8D85A3000BCA3B /* ModalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalType.swift; sourceTree = "<group>"; };
+		43CDA0262A8D85D8000BCA3B /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		43CDA02A2A8D8733000BCA3B /* ExcercisesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcercisesViewModel.swift; sourceTree = "<group>"; };
+		43CDA0342A944741000BCA3B /* OpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI.swift; sourceTree = "<group>"; };
+		43CDA0362AA56D74000BCA3B /* LogedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogedInUser.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43CDA0022A8C479C000BCA3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C27C082BF2D5EC00A73F0F /* GoogleGenerativeAI in Frameworks */,
+				43CDA0332A9446DA000BCA3B /* OpenAISwift in Frameworks */,
+				43CDA0302A9446C7000BCA3B /* OpenAIKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43CD9FFC2A8C479C000BCA3B = {
+			isa = PBXGroup;
+			children = (
+				43CDA0072A8C479C000BCA3B /* Gym-app-ioss */,
+				43CDA0062A8C479C000BCA3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43CDA0062A8C479C000BCA3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA0052A8C479C000BCA3B /* Gym-app-ioss.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43CDA0072A8C479C000BCA3B /* Gym-app-ioss */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA0082A8C479C000BCA3B /* Gym_app_iossApp.swift */,
+				43CDA0212A8D852E000BCA3B /* Utilities */,
+				43CDA01E2A8D8438000BCA3B /* Model */,
+				43CDA0282A8D869B000BCA3B /* Views */,
+				43CDA0292A8D86FB000BCA3B /* ViewModel */,
+				43CDA00C2A8C479D000BCA3B /* Assets.xcassets */,
+				43CDA00E2A8C479D000BCA3B /* Preview Content */,
+				43C27C0B2BF2DA0200A73F0F /* GenerativeAi-Info.plist */,
+			);
+			path = "Gym-app-ioss";
+			sourceTree = "<group>";
+		};
+		43CDA00E2A8C479D000BCA3B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA00F2A8C479D000BCA3B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		43CDA01E2A8D8438000BCA3B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA01F2A8D8444000BCA3B /* User.swift */,
+				43CDA0362AA56D74000BCA3B /* LogedInUser.swift */,
+				43CDA0342A944741000BCA3B /* OpenAI.swift */,
+				43C27BF92BEC5EC600A73F0F /* Food.swift */,
+				43C27C042BF2D5AC00A73F0F /* Gemini.swift */,
+				43C27C092BF2D6DD00A73F0F /* geminii.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43CDA0212A8D852E000BCA3B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA0222A8D8547000BCA3B /* Constants.swift */,
+				43CDA0242A8D85A3000BCA3B /* ModalType.swift */,
+				43CDA0262A8D85D8000BCA3B /* HttpClient.swift */,
+				4349A68A2C00CB0400684853 /* PersistanceFood.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		43CDA0282A8D869B000BCA3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA00A2A8C479C000BCA3B /* LogInWindow.swift */,
+				43CDA0182A8C49E4000BCA3B /* createUserWindow.swift */,
+				43CDA01A2A8C654E000BCA3B /* questionaire.swift */,
+				43CDA01C2A8C6858000BCA3B /* finalData.swift */,
+				43CDA0162A8C491B000BCA3B /* MainWindow.swift */,
+				43B1943E2AC760F5002CF64D /* MainWindow2.swift */,
+				43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */,
+				43C27BFD2BF24A7300A73F0F /* FisrtWindow.swift */,
+				43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */,
+				43C27BFF2BF24DEC00A73F0F /* Calories.swift */,
+				43C27BFB2BF246FE00A73F0F /* UserSettings.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		43CDA0292A8D86FB000BCA3B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				43CDA02A2A8D8733000BCA3B /* ExcercisesViewModel.swift */,
+				4349A6882BFE606400684853 /* workoutVieModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43CDA0042A8C479C000BCA3B /* Gym-app-ioss */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43CDA0132A8C479D000BCA3B /* Build configuration list for PBXNativeTarget "Gym-app-ioss" */;
+			buildPhases = (
+				43CDA0012A8C479C000BCA3B /* Sources */,
+				43CDA0022A8C479C000BCA3B /* Frameworks */,
+				43CDA0032A8C479C000BCA3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gym-app-ioss";
+			packageProductDependencies = (
+				43CDA02F2A9446C7000BCA3B /* OpenAIKit */,
+				43CDA0322A9446DA000BCA3B /* OpenAISwift */,
+				43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */,
+			);
+			productName = "Gym-app-ioss";
+			productReference = 43CDA0052A8C479C000BCA3B /* Gym-app-ioss.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43CD9FFD2A8C479C000BCA3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					43CDA0042A8C479C000BCA3B = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 43CDA0002A8C479C000BCA3B /* Build configuration list for PBXProject "Gym-app-ioss" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 43CD9FFC2A8C479C000BCA3B;
+			packageReferences = (
+				43CDA02E2A9446C7000BCA3B /* XCRemoteSwiftPackageReference "OpenAIKit" */,
+				43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+			);
+			productRefGroup = 43CDA0062A8C479C000BCA3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43CDA0042A8C479C000BCA3B /* Gym-app-ioss */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43CDA0032A8C479C000BCA3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C27C0C2BF2DA0200A73F0F /* GenerativeAi-Info.plist in Resources */,
+				43CDA0102A8C479D000BCA3B /* Preview Assets.xcassets in Resources */,
+				43CDA00D2A8C479D000BCA3B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43CDA0012A8C479C000BCA3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C27C0A2BF2D6DD00A73F0F /* geminii.swift in Sources */,
+				43CDA0272A8D85D8000BCA3B /* HttpClient.swift in Sources */,
+				43CDA0252A8D85A3000BCA3B /* ModalType.swift in Sources */,
+				4349A6892BFE606400684853 /* workoutVieModel.swift in Sources */,
+				43CDA0192A8C49E4000BCA3B /* createUserWindow.swift in Sources */,
+				43CDA0352A944741000BCA3B /* OpenAI.swift in Sources */,
+				43CDA02B2A8D8733000BCA3B /* ExcercisesViewModel.swift in Sources */,
+				43C27BF82BEC5CCA00A73F0F /* NutritionView.swift in Sources */,
+				43B1943F2AC760F5002CF64D /* MainWindow2.swift in Sources */,
+				4349A68B2C00CB0400684853 /* PersistanceFood.swift in Sources */,
+				43CDA00B2A8C479C000BCA3B /* LogInWindow.swift in Sources */,
+				43CDA01D2A8C6858000BCA3B /* finalData.swift in Sources */,
+				43C27BF62BEC3DAE00A73F0F /* ExcerciseWindow.swift in Sources */,
+				43CDA0372AA56D74000BCA3B /* LogedInUser.swift in Sources */,
+				43C27BFA2BEC5EC600A73F0F /* Food.swift in Sources */,
+				43CDA01B2A8C654E000BCA3B /* questionaire.swift in Sources */,
+				43C27BFC2BF246FE00A73F0F /* UserSettings.swift in Sources */,
+				43CDA0172A8C491B000BCA3B /* MainWindow.swift in Sources */,
+				43C27C002BF24DEC00A73F0F /* Calories.swift in Sources */,
+				43CDA0092A8C479C000BCA3B /* Gym_app_iossApp.swift in Sources */,
+				43C27BFE2BF24A7300A73F0F /* FisrtWindow.swift in Sources */,
+				43C27C052BF2D5AC00A73F0F /* Gemini.swift in Sources */,
+				43CDA0202A8D8444000BCA3B /* User.swift in Sources */,
+				43CDA0232A8D8547000BCA3B /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		43CDA0112A8C479D000BCA3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		43CDA0122A8C479D000BCA3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43CDA0142A8C479D000BCA3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gym-app-ioss/Preview Content\"";
+				DEVELOPMENT_TEAM = 39VNKU5KDP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.Mauro.Gym-app-ioss";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43CDA0152A8C479D000BCA3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gym-app-ioss/Preview Content\"";
+				DEVELOPMENT_TEAM = 39VNKU5KDP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.Mauro.Gym-app-ioss";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43CDA0002A8C479C000BCA3B /* Build configuration list for PBXProject "Gym-app-ioss" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43CDA0112A8C479D000BCA3B /* Debug */,
+				43CDA0122A8C479D000BCA3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43CDA0132A8C479D000BCA3B /* Build configuration list for PBXNativeTarget "Gym-app-ioss" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43CDA0142A8C479D000BCA3B /* Debug */,
+				43CDA0152A8C479D000BCA3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.3;
+			};
+		};
+		43CDA02E2A9446C7000BCA3B /* XCRemoteSwiftPackageReference "OpenAIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MarcoDotIO/OpenAIKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+		43CDA02F2A9446C7000BCA3B /* OpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43CDA02E2A9446C7000BCA3B /* XCRemoteSwiftPackageReference "OpenAIKit" */;
+			productName = OpenAIKit;
+		};
+		43CDA0322A9446DA000BCA3B /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 43CD9FFD2A8C479C000BCA3B /* Project object */;
+}
