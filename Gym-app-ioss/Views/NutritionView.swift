@@ -21,7 +21,7 @@ struct NutritionView: View {
     @State var quantity: String = ""
 
     @State var reload = true
-    
+    @Binding var caloriesToday: Int
     
     var body: some View {
         if buttonPressed {
@@ -268,10 +268,11 @@ func extractFood(from response: String) async throws{
             let nutritions = try jsonDecoder.decode(Food.self, from: jsonData)
             tempFood = nutritions
             addItem()
-            buttonPressed = false
+            self.caloriesToday += tempFood?.Calories ?? 0
             newItemName = ""
             self.number = 0
             self.quantity = ""
+            buttonPressed = false
             print("Saved calories = \(tempFood?.Calories ?? 1)")
         } catch {
             print("Error decoding JSON: \(error.localizedDescription)")
@@ -319,6 +320,4 @@ struct ListItem: View {
 }
 
 
-#Preview {
-    NutritionView(viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), quantity: "none")
-}
+

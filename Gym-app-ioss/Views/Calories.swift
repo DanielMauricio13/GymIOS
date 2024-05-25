@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct Calories: View {
+    
+    @Binding var caloriesToday: Int
     var body: some View {
-        Text("Your Calories Today").font(.largeTitle)
+        Text("Your Calories Today \(caloriesToday)").font(.largeTitle)
         
     }
 }
@@ -29,6 +31,3 @@ struct CalorieCounter: View {
     }
 }
 
-#Preview {
-    Calories()
-}

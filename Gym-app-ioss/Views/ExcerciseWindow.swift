@@ -11,7 +11,7 @@ struct ExcerciseWindow: View {
     
     var mainUser: User?
     @State var whichWin: Int = 0
-    
+    @State var caloriesToday: Int = 0
     var userFullWork: fullTraining?
     
     @State var counts: Int?
@@ -33,8 +33,11 @@ struct ExcerciseWindow: View {
                             FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: [])  )
                         }
                             else if(whichWin == 1){
-                                NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []))
+                                NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), caloriesToday: $caloriesToday)
                             }
+                        else if(whichWin == 2){
+                            Calories(caloriesToday: $caloriesToday)
+                        }
                         else if (whichWin == 3){
                                 UserSettings()
                         }
@@ -61,7 +64,7 @@ struct ExcerciseWindow: View {
                             }
                             
                             Spacer()
-                            Button(action: {}) {
+                            Button(action: {whichWin = 2}) {
                                 Image(systemName: "flame")
                                     .padding()
                                     .foregroundColor(.white)
