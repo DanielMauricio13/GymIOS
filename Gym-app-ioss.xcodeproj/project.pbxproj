@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4349A6892BFE606400684853 /* workoutVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A6882BFE606400684853 /* workoutVieModel.swift */; };
 		4349A68B2C00CB0400684853 /* PersistanceFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A68A2C00CB0400684853 /* PersistanceFood.swift */; };
+		4376F4092C02685C00937885 /* PersiatnceCalories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4082C02685C00937885 /* PersiatnceCalories.swift */; };
 		43B1943F2AC760F5002CF64D /* MainWindow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1943E2AC760F5002CF64D /* MainWindow2.swift */; };
 		43C27BF62BEC3DAE00A73F0F /* ExcerciseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */; };
 		43C27BF82BEC5CCA00A73F0F /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		4349A6882BFE606400684853 /* workoutVieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workoutVieModel.swift; sourceTree = "<group>"; };
 		4349A68A2C00CB0400684853 /* PersistanceFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceFood.swift; sourceTree = "<group>"; };
+		4376F4082C02685C00937885 /* PersiatnceCalories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersiatnceCalories.swift; sourceTree = "<group>"; };
 		43B1943E2AC760F5002CF64D /* MainWindow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow2.swift; sourceTree = "<group>"; };
 		43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseWindow.swift; sourceTree = "<group>"; };
 		43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				43CDA0242A8D85A3000BCA3B /* ModalType.swift */,
 				43CDA0262A8D85D8000BCA3B /* HttpClient.swift */,
 				4349A68A2C00CB0400684853 /* PersistanceFood.swift */,
+				4376F4082C02685C00937885 /* PersiatnceCalories.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				43C27C052BF2D5AC00A73F0F /* Gemini.swift in Sources */,
 				43CDA0202A8D8444000BCA3B /* User.swift in Sources */,
 				43CDA0232A8D8547000BCA3B /* Constants.swift in Sources */,
+				4376F4092C02685C00937885 /* PersiatnceCalories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

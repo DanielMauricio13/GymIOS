@@ -8,13 +8,85 @@
 import SwiftUI
 
 struct Calories: View {
-    
+    var mainUser: User?
     @Binding var caloriesToday: Int
     var body: some View {
-        Text("Your Calories Today \(caloriesToday)").font(.largeTitle)
+        VStack {
+            CircularProgressBar(progress: caloriesToday, goal: mainUser?.DailyCalories ?? 1)
+                    
+                    let currentTime = Date()
+                    let startOfDay = Calendar.current.startOfDay(for: currentTime)
+                    let endOfDay = Calendar.current.date(byAdding: .hour, value: 24, to: startOfDay)!
+                    
+                    LinearProgressBar(currentTime: currentTime, startOfDay: startOfDay, endOfDay: endOfDay)
+                    
+            Text("Your goal: \(caloriesToday) / \(mainUser?.DailyCalories ?? 1)")
+                }
+                .padding()
+            }
         
     }
+struct LinearProgressBar: View {
+    var currentTime: Date
+    var startOfDay: Date
+    var endOfDay: Date
+    
+    var progress: Double {
+        let totalSeconds = endOfDay.timeIntervalSince(startOfDay)
+        let elapsedSeconds = currentTime.timeIntervalSince(startOfDay)
+        return min(elapsedSeconds / totalSeconds, 1.0)
+    }
+    
+    var body: some View {
+        VStack {
+            Text("Today")
+                .font(.headline)
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .opacity(0.3)
+                        .foregroundColor(Color.gray)
+                    
+                    Rectangle()
+                        .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+                        .foregroundColor(Color.blue)
+                        
+                }
+                .cornerRadius(45.0)
+            }
+            .frame(height: 20)
+        }
+        .padding()
+    }
 }
+
+struct CircularProgressBar: View {
+    var progress: Int
+    var goal: Int
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(lineWidth: 20.0)
+                .opacity(0.3)
+                .foregroundColor(Color.gray)
+            
+            Circle()
+                .trim(from: 0.0, to: CGFloat(min(Double(progress) / Double(goal), 1.0)))
+                .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
+                .foregroundColor(Color.blue)
+                .rotationEffect(Angle(degrees: 270.0))
+                
+            
+            Text(String(format: "%d%%", min(progress * 100 / goal, 100)))
+                .font(.largeTitle)
+                .bold()
+        }
+        .padding(40)
+    }
+}
+
 
 struct CalorieCounter: View {
     var title: String

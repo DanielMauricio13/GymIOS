@@ -36,7 +36,7 @@ struct ExcerciseWindow: View {
                                 NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), caloriesToday: $caloriesToday)
                             }
                         else if(whichWin == 2){
-                            Calories(caloriesToday: $caloriesToday)
+                            Calories(mainUser: mainUser,caloriesToday: $caloriesToday)
                         }
                         else if (whichWin == 3){
                                 UserSettings()
