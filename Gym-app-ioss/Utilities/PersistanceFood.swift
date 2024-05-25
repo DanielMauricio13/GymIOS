@@ -22,9 +22,17 @@ class PersistenceManager {
 
     func loadItems() -> [Food] {
         guard let savedDate = userDefaults.object(forKey: dateKey) as? Date else { return [] }
-        let oneDayAgo = Date().addingTimeInterval(-86400)
         
-        if savedDate < oneDayAgo {
+        // Get the current date
+        let currentDate = Date()
+        
+        // Extract the date components (year, month, day) from the saved date and current date
+        let calendar = Calendar.current
+        let savedDateComponents = calendar.dateComponents([.year, .month, .day], from: savedDate)
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: currentDate)
+        
+        // Check if the saved date and the current date are different
+        if savedDateComponents != currentDateComponents {
             clearItems()
             return []
         }
@@ -37,8 +45,19 @@ class PersistenceManager {
         }
         return []
     }
+    func clearItem(byName name: String) {
+            if let savedItems = userDefaults.data(forKey: itemsKey) {
+                let decoder = JSONDecoder()
+                if var loadedItems = try? decoder.decode([Food].self, from: savedItems) {
+                    if let index = loadedItems.firstIndex(where: { $0.Name == name }) {
+                        loadedItems.remove(at: index)
+                        saveItems(items: loadedItems)
+                    }
+                }
+            }
+        }
 
-    private func clearItems() {
+     func clearItems() {
         userDefaults.removeObject(forKey: itemsKey)
         userDefaults.removeObject(forKey: dateKey)
     }
