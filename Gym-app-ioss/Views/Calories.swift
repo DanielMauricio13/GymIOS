@@ -9,20 +9,20 @@ import SwiftUI
 
 struct Calories: View {
     var mainUser: User?
-    @Binding var caloriesToday: Int
+     
     var body: some View {
         VStack {
-            CircularProgressBar(progress: caloriesToday, goal: mainUser?.DailyCalories ?? 1)
+            CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
                     
                     let currentTime = Date()
                     let startOfDay = Calendar.current.startOfDay(for: currentTime)
                     let endOfDay = Calendar.current.date(byAdding: .hour, value: 24, to: startOfDay)!
                     
-                    LinearProgressBar(currentTime: currentTime, startOfDay: startOfDay, endOfDay: endOfDay)
+                   // LinearProgressBar(currentTime: currentTime, startOfDay: startOfDay, endOfDay: endOfDay)
                     
-            Text("Your goal: \(caloriesToday) / \(mainUser?.DailyCalories ?? 1)")
+            Text("Your goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1)").font(.title).bold()
                 }
-                .padding()
+        .padding()
             }
         
     }
@@ -50,7 +50,7 @@ struct LinearProgressBar: View {
                     
                     Rectangle()
                         .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color.red)
                         
                 }
                 .cornerRadius(45.0)
@@ -75,7 +75,7 @@ struct CircularProgressBar: View {
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(Double(progress) / Double(goal), 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
-                .foregroundColor(Color.blue)
+                .foregroundColor(Color.red)
                 .rotationEffect(Angle(degrees: 270.0))
                 
             

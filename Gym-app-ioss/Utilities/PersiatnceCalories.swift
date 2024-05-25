@@ -10,16 +10,16 @@ import Foundation
 
 extension UserDefaults {
     private enum Keys {
-        static let calories = "calories"
+        static let caloriesToday = "caloriesToday"
         static let lastResetDate = "lastResetDate"
     }
 
     var calories: Int {
         get {
-            return integer(forKey: Keys.calories)
+            return integer(forKey: Keys.caloriesToday)
         }
         set {
-            set(newValue, forKey: Keys.calories)
+            set(newValue, forKey: Keys.caloriesToday)
         }
     }
 
@@ -32,3 +32,62 @@ extension UserDefaults {
         }
     }
 }
+
+
+class CaloriesManager {
+    static let shared = CaloriesManager()
+
+    var calories: Int {
+        get {
+            return UserDefaults.standard.calories
+        }
+        set {
+            UserDefaults.standard.calories = newValue
+        }
+    }
+
+    private init() {
+        // Check if the last reset date was today; if not, reset calories
+        if let lastResetDate = UserDefaults.standard.lastResetDate,
+           !Calendar.current.isDateInToday(lastResetDate) {
+            self.calories = 0
+        }
+        
+        // Set the last reset date to today
+        UserDefaults.standard.lastResetDate = Date()
+        
+        // Schedule the reset at midnight
+        scheduleMidnightReset()
+    }
+
+    private func scheduleMidnightReset() {
+        let now = Date()
+        let calendar = Calendar.current
+
+        // Calculate the next midnight
+        var components = calendar.dateComponents([.year, .month, .day], from: now)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+
+        guard let nextMidnight = calendar.date(byAdding: .day, value: 1, to: calendar.date(from: components)!) else {
+            return
+        }
+
+        // Schedule the reset
+        let timeInterval = nextMidnight.timeIntervalSince(now)
+        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { _ in
+            self.resetCalories()
+        }
+    }
+
+    private func resetCalories() {
+        self.calories = 0
+        UserDefaults.standard.calories = 0
+        UserDefaults.standard.lastResetDate = Date()
+        
+        // Reschedule the reset for the next midnight
+        scheduleMidnightReset()
+    }
+}
+

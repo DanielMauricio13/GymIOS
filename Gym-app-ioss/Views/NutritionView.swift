@@ -21,7 +21,7 @@ struct NutritionView: View {
     @State var quantity: String = ""
 
     @State var reload = true
-    @Binding var caloriesToday: Int
+    
     
     var body: some View {
         if buttonPressed {
@@ -164,6 +164,7 @@ struct NutritionView: View {
                     Spacer()
                     Button(action: {
                         persistenceManager.clearItem(byName: item.title)
+                        
                                             }) {
                                                 Text("Remove")
                                                     .foregroundColor(.red)
@@ -220,8 +221,8 @@ func geminii() async throws {
     
     
     let chat = model.startChat(history: [
-      ModelContent(role: "user", parts: "A user ate today 1 portion of banana, give me in a Json file the number of proteins(an int), calories(an int), sugars(an int), and carbohyd\nrates(an int)"),
-      ModelContent(role: "model", parts: "```json\n{\n   \"Name\" : \"Banana\"\n    \"Protein\":  1.1,\n    \"Calories\": 105,\n    \"Sugars\": 14.4,\n    \"Carbohydrates\": 27\n  }\n}\n```\n")
+      ModelContent(role: "user", parts: "A user ate today 1 portion of banana, give me in a Json file the number of proteins(return int), calories(return int), sugars(return int), and carbohyd\nrates(return int)"),
+      ModelContent(role: "model", parts: "```json\n{\n   \"Name\" : \"Banana\"\n    \"Protein\":  1,\n    \"Calories\": 105,\n    \"Sugars\": 14,\n    \"Carbohydrates\": 27\n  }\n}\n```\n")
     ])
   
     Task {
@@ -268,7 +269,7 @@ func extractFood(from response: String) async throws{
             let nutritions = try jsonDecoder.decode(Food.self, from: jsonData)
             tempFood = nutritions
             addItem()
-            self.caloriesToday += tempFood?.Calories ?? 0
+            CaloriesManager.shared.calories += tempFood?.Calories ?? 0
             newItemName = ""
             self.number = 0
             self.quantity = ""

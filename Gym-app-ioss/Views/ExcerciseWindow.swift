@@ -33,10 +33,10 @@ struct ExcerciseWindow: View {
                             FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: [])  )
                         }
                             else if(whichWin == 1){
-                                NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), caloriesToday: $caloriesToday)
+                                NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []))
                             }
                         else if(whichWin == 2){
-                            Calories(mainUser: mainUser,caloriesToday: $caloriesToday)
+                            Calories(mainUser: mainUser)
                         }
                         else if (whichWin == 3){
                                 UserSettings()

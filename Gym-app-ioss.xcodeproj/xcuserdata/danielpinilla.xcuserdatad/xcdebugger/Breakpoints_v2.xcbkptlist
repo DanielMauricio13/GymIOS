@@ -492,8 +492,8 @@
             filePath = "Gym-app-ioss/Views/NutritionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "extractFood(from:)"
             landmarkType = "7">
          </BreakpointContent>
