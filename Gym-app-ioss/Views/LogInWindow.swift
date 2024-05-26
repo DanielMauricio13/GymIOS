@@ -39,7 +39,12 @@ struct LogInWindow: View {
                         VStack {
                             Text("Pow AI").font(.largeTitle).bold().padding(.bottom).foregroundColor(.white).padding(51)
                             TextField("Email", text: $username).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongUsername)).foregroundColor(.white).font(.headline)
-                            SecureField("Password", text: $password).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongPassword)).accentColor(.white).foregroundColor(.white).font(.headline)
+                            SecureField("Password", text: $password).foregroundStyle(Color.white).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongPassword)).accentColor(.white).foregroundColor(.white).font(.headline)
+                            if wrongUsername == 1 {
+                                NavigationLink(destination: createUserWindow()) {
+                                    Text("Wrongh email or password. Recover?").underline().foregroundColor(.red)
+                                }.padding(.top)
+                            }
                             Button {
                                 authenticateUser(username, password)
                             } label: {
@@ -73,6 +78,12 @@ struct LogInWindow: View {
                     break;
                 case 401:
                     print("Credentials do not match")
+                    wrongPassword = 1
+                    wrongUsername = 1
+                case 404:
+                    print("Credentials do not match")
+                    wrongPassword = 1
+                    wrongUsername = 1
                 default:
                     print("Unknown response status: \(response.statusCode)")
                 }

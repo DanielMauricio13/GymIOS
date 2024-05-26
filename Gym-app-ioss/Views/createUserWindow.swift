@@ -46,7 +46,7 @@ struct createUserWindow: View {
                         Button{
                             nextView()
                         }label: {
-                            Text("submit").foregroundColor(.white).background(Color(.systemBlue)).cornerRadius(5).font(.title)
+                            Text("Next").foregroundColor(.white).background(Rectangle().clipShape(.capsule).frame(width: 70,height: 30))
                         }
                         
                     }
@@ -54,30 +54,33 @@ struct createUserWindow: View {
             }
         }
     }
-//    func checkEmail(_ email: String) async throws ->Int {
-//
-//        guard let url = URL(string: "\(Constants.baseURL)\(EndPoints.users)/checkEmail?email=\(email)") else {
-//             print("error")
-//            return 0
-//        }
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let response = response as? HTTPURLResponse {
-//                switch response.statusCode {
-//                case 200:
-//
-//                    return 1
-//                case 401:
-//                    print("Credentials do not match")
-//                default:
-//                    print("Unknown response status: \(response.statusCode)")
-//                }
-//
-//            }
-//            return 0
-//
-//        }
-//        task.resume()
-//    }
+    
+    func checkEmail(_ email: String) async throws ->Int {
+
+        guard let url = URL(string: "\(Constants.baseURL)\(EndPoints.users)/checkEmail?email=\(email)") else {
+             print("error")
+            return 0
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let response = response as? HTTPURLResponse {
+                switch response.statusCode {
+                case 200:
+
+                    print("foiund")
+                case 401:
+                    print("Credentials do not match")
+                default:
+                    print("Unknown response status: \(response.statusCode)")
+                }
+
+            }
+            
+
+        }
+        
+        task.resume()
+        return 1
+    }
     func nextView(){
         if firstName.count > 2 && lastName.count > 2 && password.count > 2 && email.count > 2 {
             isDataSaved = true

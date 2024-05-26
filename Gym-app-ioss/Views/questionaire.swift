@@ -40,12 +40,23 @@ struct questionaire: View {
             ZStack{
                 Color.black.ignoresSafeArea()
                 VStack {
-                    
+                  
                     
                     if currentQuestionIndex < questions.count {
                         Text("Building your plan!").font(.largeTitle).bold().foregroundColor(.white).padding(.bottom,100)
-                        
+                        if currentQuestionIndex == 0 {
+                            Image("Body-Set") // Replace with the actual name of your image
+                                            .resizable() // Makes the image resizable
+                                            .aspectRatio(contentMode: .fit) // Maintains the aspect ratio
+                                            .frame(width: 300, height: 200) // Sets the frame size
+                                            .clipShape(Rectangle()) // Optionally clips the image to a circle
+                                            .overlay(
+                                                Rectangle().stroke(Color.white, lineWidth: 1) // Adds a border to the image
+                                            )
+                                            .shadow(radius: 10)
+                        }
                         QuestionView(question: $questions[currentQuestionIndex], nextQuestion: nextQuestion)
+                        
                     } else {
                         if let numDaysInt = Int(questions[3].selectedOption) {
                             finalData(firstName: firstName,
