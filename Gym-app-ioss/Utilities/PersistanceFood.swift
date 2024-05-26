@@ -50,7 +50,9 @@ class PersistenceManager {
                 let decoder = JSONDecoder()
                 if var loadedItems = try? decoder.decode([Food].self, from: savedItems) {
                     if let index = loadedItems.firstIndex(where: { $0.Name == name }) {
-                        CaloriesManager.shared.calories -= loadedItems.remove(at: index).Calories
+                        let temp: Food = loadedItems.remove(at: index)
+                        CaloriesManager.shared.calories -= temp.Calories
+                        ProteinManager.shared.protein -= temp.Protein
                         saveItems(items: loadedItems)
                         
                     }

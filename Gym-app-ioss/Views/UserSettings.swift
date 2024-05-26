@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct UserSettings: View {
-    @State private var shouldNavigate = false
+    @Binding  var persistenceManager: PersistenceManager
+    @Binding var LogOut: Bool
     var body: some View {
-        
-        NavigationLink("Log out") {
-            LogInWindow()
+        VStack{
+            Text("User Settings").font(.largeTitle).foregroundStyle(Color.white)
+            Spacer()
+            Button{
+                logout()
+                LogOut = true
+            }label: {
+                Text("Log out").font(.title3).foregroundStyle(Color.white).background(RoundedRectangle(cornerRadius: 90).foregroundStyle(Color.red).frame(width: 150, height: 50) )
+            }
+            
         }
+    }
+    func logout()->Void {
+        UserDefaults.standard.removeObject(forKey: "isAuthenticated")
+        UserDefaults.standard.removeObject(forKey: "username")
+        CaloriesManager.shared.calories = 0
+        ProteinManager.shared.protein = 0
+        persistenceManager.clearItems()
     }
     
       
     
 }
 
-#Preview {
-    UserSettings()
-}

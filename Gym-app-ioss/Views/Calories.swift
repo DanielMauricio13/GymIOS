@@ -11,55 +11,46 @@ struct Calories: View {
     var mainUser: User?
      
     var body: some View {
-        VStack {
-            CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
-                    
-                    let currentTime = Date()
-                    let startOfDay = Calendar.current.startOfDay(for: currentTime)
-                    let endOfDay = Calendar.current.date(byAdding: .hour, value: 24, to: startOfDay)!
-                    
-                   // LinearProgressBar(currentTime: currentTime, startOfDay: startOfDay, endOfDay: endOfDay)
-                    
-            Text("Your goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1)").font(.title).bold()
+        
+            VStack {
+                Text("Todays Nutrition").font(.largeTitle).bold()
+                HStack{
+                    Spacer()
+                    VStack(alignment: .center) {
+                        CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
+                        Text("Your Calories goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1) 🔥").font(.title3)
+                        Spacer()
+                    }.frame(width: 200,height: 300)
+                    Spacer()
+                    VStack(alignment: .center){
+                        CircularProgressBar(progress: ProteinManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
+                        Text("Your Protein goal: \(ProteinManager.shared.protein) / \(mainUser?.DailyProtein ?? 1) 🍗").font(.title3)
+                        Spacer()
+                    }.frame(width: 200,height: 300)
+                    Spacer()
                 }
-        .padding()
+                HStack{
+                    Spacer()
+                    VStack(alignment: .center) {
+                        CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
+                        Text("Your Calories goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1) 🔥").font(.title3)
+                        Spacer()
+                    }.frame(width: 200,height: 300)
+                    Spacer()
+                    VStack(alignment: .center){
+                        CircularProgressBar(progress: ProteinManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
+                        Text("Your Protein goal: \(ProteinManager.shared.protein) / \(mainUser?.DailyProtein ?? 1) 🍗").font(.title3)
+                        Spacer()
+                    }.frame(width: 200,height: 300)
+                    Spacer()
+                }
             }
+            .padding()
         
     }
-struct LinearProgressBar: View {
-    var currentTime: Date
-    var startOfDay: Date
-    var endOfDay: Date
-    
-    var progress: Double {
-        let totalSeconds = endOfDay.timeIntervalSince(startOfDay)
-        let elapsedSeconds = currentTime.timeIntervalSince(startOfDay)
-        return min(elapsedSeconds / totalSeconds, 1.0)
+        
     }
-    
-    var body: some View {
-        VStack {
-            Text("Today")
-                .font(.headline)
-            GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .opacity(0.3)
-                        .foregroundColor(Color.gray)
-                    
-                    Rectangle()
-                        .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
-                        .foregroundColor(Color.red)
-                        
-                }
-                .cornerRadius(45.0)
-            }
-            .frame(height: 20)
-        }
-        .padding()
-    }
-}
+
 
 struct CircularProgressBar: View {
     var progress: Int
@@ -69,18 +60,20 @@ struct CircularProgressBar: View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 20.0)
+                .frame(width: 150, height: 150) // Adjust the frame size
                 .opacity(0.3)
                 .foregroundColor(Color.gray)
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(Double(progress) / Double(goal), 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
+                .frame(width: 150, height: 150) // Adjust the frame size
                 .foregroundColor(Color.red)
                 .rotationEffect(Angle(degrees: 270.0))
                 
             
             Text(String(format: "%d%%", min(progress * 100 / goal, 100)))
-                .font(.largeTitle)
+                .font(.title2)
                 .bold()
         }
         .padding(40)
@@ -88,18 +81,5 @@ struct CircularProgressBar: View {
 }
 
 
-struct CalorieCounter: View {
-    var title: String
-    
-    var body: some View {
-        HStack {
-            Spacer().frame(width: 20)
-            Text(title).foregroundStyle(Color.white)
-            Spacer()
-            Image(systemName: "flame").foregroundStyle(Color.orange)
-            
-            Spacer().frame(width: 14)
-        }.frame(width:390, height: 50).background(Color.white.opacity(0.2)).clipShape(.capsule)
-    }
-}
+
 

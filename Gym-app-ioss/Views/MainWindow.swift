@@ -44,7 +44,7 @@ struct MainWindow: View {
                     switch result {
                     case .success(let user):
                         mainUser = user // Assign the loggedInUser to mainUser
-                        print("User info received:", user)
+//                        print("User info received:", user)
                         
                         // Data has been loaded, update loading state
                         isLoading = false
@@ -58,7 +58,7 @@ struct MainWindow: View {
                     switch result {
                     case .success(let user):
                         userFullWork = user // Assign the loggedInUser to mainUser
-                        print("user Excersises receiver:", user)
+//                        print("user Excersises receiver:", user)
                         
                         // Data has been loaded, update loading state
                         isLoading = false
@@ -106,7 +106,7 @@ struct MainWindow: View {
                 return
             }
             if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        print("Received JSON data:\n\(jsonString)")
+//                        print("Received JSON data:\n\(jsonString)")
                     }
             
             do {

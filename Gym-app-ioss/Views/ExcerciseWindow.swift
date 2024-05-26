@@ -13,100 +13,101 @@ struct ExcerciseWindow: View {
     @State var whichWin: Int = 0
     @State var caloriesToday: Int = 0
     var userFullWork: fullTraining?
+    @State var persistenceManager = PersistenceManager()
+    @State var LogOut: Bool = false
     
     @State var counts: Int?
     var body: some View {
     
         
-             
+        if LogOut {
+            LogInWindow()
+        }
         
         // Your main content here
-        
-        NavigationView {
-                    VStack {
-                        // Your main content
-                       
+        else{
+            NavigationView {
+                VStack {
+                    // Your main content
+                    
+                    
+                    // Spacer to push navigation bar to the bottom
+                    
+                    if( whichWin == 0 ){
+                        FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: [])  )
+                    }
+                    else if(whichWin == 1){
+                        NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), persistenceManager: $persistenceManager)
+                    }
+                    else if(whichWin == 2){
+                        Calories(mainUser: mainUser)
+                    }
+                    else if (whichWin == 3){
+                        UserSettings(persistenceManager: $persistenceManager, LogOut: $LogOut)
+                    }
+                    Spacer()
+                    
+                    // Sticky navigation bar
+                    HStack {
+                        Spacer()
+                        Button(action: {whichWin = 0}) {
+                            Image(systemName: "house")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .cornerRadius(10)
+                        }
                         
-                        // Spacer to push navigation bar to the bottom
+                        Spacer()
+                        Button(action: {whichWin = 1}) {
+                            Image(systemName: "leaf")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .cornerRadius(10)
+                        }
                         
-                        if( whichWin == 0 ){
-                            FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: [])  )
+                        Spacer()
+                        Button(action: {whichWin = 2}) {
+                            Image(systemName: "flame")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .cornerRadius(10)
                         }
-                            else if(whichWin == 1){
-                                NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []))
-                            }
-                        else if(whichWin == 2){
-                            Calories(mainUser: mainUser)
-                        }
-                        else if (whichWin == 3){
-                                UserSettings()
-                        }
+                        
                         Spacer()
                         
-                        // Sticky navigation bar
-                        HStack {
-                            Spacer()
-                            Button(action: {whichWin = 0}) {
-                                Image(systemName: "house")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.black)
-                                    .cornerRadius(10)
-                            }
-                            
-                            Spacer()
-                            Button(action: {whichWin = 1}) {
-                                Image(systemName: "leaf")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.black)
-                                    .cornerRadius(10)
-                            }
-                            
-                            Spacer()
-                            Button(action: {whichWin = 2}) {
-                                Image(systemName: "flame")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.black)
-                                    .cornerRadius(10)
-                            }
-                            
-                            Spacer()
-                           
-                         
-                               
-                                    Button(action: {
-                                        whichWin = 3
-                                            logout()
-                                    }) {
-                                        Image(systemName: "gear")
-                                            .padding()
-                                            .foregroundColor(.white)
-                                            .background(Color.black)
-                                            .cornerRadius(10)
-                                    }
-                                
-                            
-                                
-                            Spacer()
-
+                        
+                        
+                        Button(action: {
+                            whichWin = 3
+                        }) {
+                            Image(systemName: "gear")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
+                                .cornerRadius(10)
                         }
-                        .padding()
-                        .frame(height: 70) // Adjust the height of the navigation bar as needed
-                        .background(Color.red)
-                        .edgesIgnoringSafeArea(.bottom) // Extend the navigation bar to the bottom
+                        
+                        
+                        
+                        Spacer()
+                        
                     }
-                    .background(Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)) // Background color for the main content
-                    .navigationBarHidden(true) // Hide the default navigation bar
-        }.onAppear{
-            counts = userFullWork?.userExcersises.workout_plan.count
+                    .padding()
+                    .frame(height: 70) // Adjust the height of the navigation bar as needed
+                    .background(Color.red)
+                    .edgesIgnoringSafeArea(.bottom) // Extend the navigation bar to the bottom
+                }
+                .background(Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)) // Background color for the main content
+                .navigationBarHidden(true) // Hide the default navigation bar
+            }.onAppear{
+                counts = userFullWork?.userExcersises.workout_plan.count
+            }
         }
             }
-    func logout()->Void {
-        UserDefaults.standard.removeObject(forKey: "isAuthenticated")
-        UserDefaults.standard.removeObject(forKey: "username")
-    }
+  
 
     
 }

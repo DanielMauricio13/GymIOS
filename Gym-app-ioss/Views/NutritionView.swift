@@ -15,7 +15,7 @@ struct NutritionView: View {
     @State  var expandedIndexes = Set<Int>()
     @State private var items: [Food] = []
     @State private var newItemName: String = ""
-    private let persistenceManager = PersistenceManager()
+    @Binding  var persistenceManager: PersistenceManager
     @State var tempFood:Food?
     @State var number: Int = 0
     @State var quantity: String = ""
@@ -111,7 +111,7 @@ struct NutritionView: View {
                 for i in  0..<persistenceManager.loadItems().count {
                     viewModel.items.append(ExcListItem(title: temp[i].Name, description: "This food with this portion has approx: \(temp[i].Calories) calories, \(temp[i].Protein)g of protein, \(temp[i].Carbohydrates) Carbs, \(temp[i].Sugars)g of sugars", totalCalories: 0, duration: 0, NumExcersises: 0))
                 }
-                print(viewModel)
+               
                
                
                 
@@ -221,13 +221,13 @@ func geminii() async throws {
     
     
     let chat = model.startChat(history: [
-      ModelContent(role: "user", parts: "A user ate today 1 portion of banana, give me in a Json file the number of proteins(return int), calories(return int), sugars(return int), and carbohyd\nrates(return int)"),
+      ModelContent(role: "user", parts: "A user ate today 1 portion of banana, give me in a Json file the number of proteins(return int), calories(return int), sugars(return int), and carbohydrates(return an int)"),
       ModelContent(role: "model", parts: "```json\n{\n   \"Name\" : \"Banana\"\n    \"Protein\":  1,\n    \"Calories\": 105,\n    \"Sugars\": 14,\n    \"Carbohydrates\": 27\n  }\n}\n```\n")
     ])
   
     Task {
         do {
-            let message1 = "A user ate today \(self.number) \(self.quantity) of \(foodName), give me in a Json file the number of proteins, calories, sugars, and carbohydrates"
+            let message1 = "A user ate today \(self.number) \(self.quantity) of \(foodName), give me in a Json file and all integers the number of proteins(int), calories(int), sugars(int), and carbohydrates(int)"
             let response1 = try await chat.sendMessage(message1)
             try await extractFood(from: response1.text ?? "")
         } catch {
@@ -246,6 +246,7 @@ func geminii() async throws {
 func extractFood(from response: String) async throws{
     // Remove the code block indicators from the JSON string
     var trimmedResponse = response.replacingOccurrences(of: "```json", with: "")
+    print(trimmedResponse)
     trimmedResponse = trimmedResponse.replacingOccurrences(of: "```", with: "")
     trimmedResponse = trimmedResponse.trimmingCharacters(in: .whitespacesAndNewlines)
     
@@ -270,6 +271,8 @@ func extractFood(from response: String) async throws{
             tempFood = nutritions
             addItem()
             CaloriesManager.shared.calories += tempFood?.Calories ?? 0
+            
+            ProteinManager.shared.protein += tempFood?.Protein ?? 0
             newItemName = ""
             self.number = 0
             self.quantity = ""
@@ -277,6 +280,16 @@ func extractFood(from response: String) async throws{
             print("Saved calories = \(tempFood?.Calories ?? 1)")
         } catch {
             print("Error decoding JSON: \(error.localizedDescription)")
+            do { let nutritions = try jsonDecoder.decode(meal.self, from: jsonData)
+                for i in 0..<nutritions.meal.count {
+                    tempFood = nutritions.meal[i]
+                    addItem()
+                    CaloriesManager.shared.calories += tempFood?.Calories ?? 0
+                    ProteinManager.shared.protein += tempFood?.Protein ?? 0
+                }
+            }
+            catch{ print("Error decoding JSON meal: \(error.localizedDescription)")
+            }
         }
     }
    

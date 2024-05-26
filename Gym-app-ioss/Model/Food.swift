@@ -26,3 +26,8 @@ struct Food:Codable, Identifiable {
         
     }
 }
+
+struct meal:Codable, Identifiable {
+    var id: UUID?
+    var meal: [Food]
+}
