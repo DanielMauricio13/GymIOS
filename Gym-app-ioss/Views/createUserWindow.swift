@@ -38,7 +38,7 @@ struct createUserWindow: View {
                                 TextField("Email", text: $email).listRowBackground(Color.gray).foregroundColor(.white).cornerRadius(10).listRowBackground(Rectangle().clipShape(.capsule).border(Color.red, width: CGFloat(wrongEmail)))
                             }
                             
-                            Section(header: Text("Password"), footer: Text("Passwords do not match").opacity(CGFloat(wrongPassword)).foregroundStyle(Color.red)){
+                            Section(header: Text("Password"), footer: Text("Passwords do not match or is empty").opacity(CGFloat(wrongPassword)).foregroundStyle(Color.red)){
                                 SecureField("Password", text: $password).listRowBackground(Color.gray).foregroundColor(.white)
                                 SecureField("Confirm password", text: $confirmPassword).listRowBackground(Color.gray).foregroundColor(.white)
                             }
@@ -79,7 +79,7 @@ struct createUserWindow: View {
 
             }
             
-            if password != confirmPassword {
+            if password != confirmPassword || password == "" {
                 wrongPassword = 1
             }else{
                 wrongPassword = 0
@@ -94,7 +94,7 @@ struct createUserWindow: View {
         return
     }
     func nextView(){
-        if firstName != "" && lastName.count > 2 && password.count > 2 && email.count > 2 {
+        if firstName != "" && lastName != "" {
             isDataSaved = true
         }
     }
