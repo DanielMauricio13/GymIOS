@@ -105,9 +105,9 @@ struct MainWindow: View {
                 completion(.failure(NetworkError.noData))
                 return
             }
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-//                        print("Received JSON data:\n\(jsonString)")
-                    }
+//            if let jsonString = String(data: jsonData, encoding: .utf8) {
+////                        print("Received JSON data:\n\(jsonString)")
+//                    }
             
             do {
                 let user = try JSONDecoder().decode(User.self, from: jsonData)
