@@ -65,6 +65,7 @@ struct createUserWindow: View {
              print("error")
             return
         }
+        self.email = email.uppercased()
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let response = response as? HTTPURLResponse {
                 switch response.statusCode {

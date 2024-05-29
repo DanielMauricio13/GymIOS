@@ -22,18 +22,26 @@ struct User: Identifiable, Codable{
     var DailyProtein: Int
     var email:String
     var password:String
-    
+    var heightFt: Int
+    var heightInc: Int
     var numHours: String
     var numDays: Int
+    var sugars: Int
+    var carbs: Int
+    var burnCalories: Int
+    var water: Double
+  
 
-    
-   
     
 }
 
 struct userNutrition: Codable{
     var protein: Int
     var calories: Int
+    var sugars: Int
+    var carbs: Int
+    var burnCalories: Int
+    var water: Double
 }
 struct aiResponse: Codable {
     var userExcersise: userExcersise

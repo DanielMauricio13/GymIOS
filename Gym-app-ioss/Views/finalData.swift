@@ -29,7 +29,17 @@ struct finalData: View {
     let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.default)
     @State var excersise: userExcersise?
     @State var responseInString: String = "valve"
-   
+    @State private var selectedOption = "Kg"
+    @State private var selectedOption2 = "cm"
+    let options = ["Kg", "lb"]
+    let optionsw = ["cm", "Ft + in"]
+    @State var heightFt: Int = 0
+    @State var heightIn: Int = 0
+    @State var carbs :Int?
+    @State var sugars: Int?
+    @State var DalyCaloriesBurn: Int?
+    
+    @State var water: Double?
     
     var body: some View {
     
@@ -43,24 +53,57 @@ struct finalData: View {
                 Spacer()
                 VStack{
                     Form{
-                        Section(header: Text("Age").foregroundColor(.white)){
+                        Section(header: Text("Age").foregroundColor(.red)){
                             TextField("Age", text: Binding<String>(
-                                get: { String(age) },
+                                get: { String() },
                                 set: { if let newValue = Int($0) { age = newValue } }
                             )).keyboardType(.numberPad).listRowBackground(Color.gray)
                         }.foregroundColor(.white).bold()
-                        Section(header: Text("Height")){
-                            TextField("Height", text: Binding<String>(
-                                get: { String(height) },
-                                set: { if let newValue = Int($0) { height = newValue } }
-                            )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                        }.foregroundColor(.white).bold()
-                        Section(header: Text("Weight")){
-                            TextField("Weight", text: Binding<String>(
-                                get: { String(weight) },
-                                set: { if let newValue = Int($0) { weight = newValue } }
-                            )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                        }.foregroundColor(.white).bold()
+                        Section(header: Text("Height").foregroundStyle(Color.red)){
+                            HStack{
+                                if(selectedOption2 == "cm"){
+                                    TextField("Height", text: Binding<String>(
+                                        get: { String() },
+                                        set: { if let newValue = Int($0) { height = newValue } }
+                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
+                                }else{
+                                    TextField("Ft", text: Binding<String>(
+                                        get: { String() },
+                                        set: { if let newValue = Int($0) { heightFt = newValue } }
+                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
+                                    TextField("in", text: Binding<String>(
+                                        get: { String() },
+                                        set: { if let newValue = Int($0) { heightIn = newValue } }
+                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
+                                }
+                                Picker("", selection: $selectedOption2) {
+                                    ForEach(optionsw, id: \.self) { option in
+                                        Text(option)
+                                    }
+                                    
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                            }
+                          
+                        }.foregroundColor(.white).bold().listRowBackground(Color.gray)
+                        Section(header: Text("Weight ").foregroundStyle(Color.red)){
+                            HStack{
+                                TextField("Weight", text: Binding<String>(
+                                    get: { String() },
+                                    set: { if let newValue = Int($0) { weight = newValue } }
+                                )).keyboardType(.numberPad).listRowBackground(Color.gray)
+                                Picker("", selection: $selectedOption) {
+                                    ForEach(options, id: \.self) { option in
+                                        Text(option)
+                                    }
+                                    
+                                }
+                                .pickerStyle(MenuPickerStyle()) // Dropdown style
+                            }
+                            
+                            
+                        }.foregroundColor(.white).bold().listRowBackground(Color.gray)
+                       
                     }
                     
 //                    Button{
@@ -107,59 +150,60 @@ struct finalData: View {
             ]
         )
         
+       
         
         
         
-        
-        
-        let message1 = "a \(gender) of \(age) years with a height of \(height) cm and a weigth of \(weight) kg with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of protein and Calories a day that person should consume to fulfill his goal. Do not include Important Considerations"
-        let message2 = "a \(gender) of \(age) years with a height of \(height) cm and a weight of \(weight) kg with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
-        
+            let message1 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
+            let message2 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
+       
+            let message3 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
+            let message4 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
+            
+      
         
         let chat = model.startChat(history: [
-            ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, in a Json file give me the exact number(not in range)  of protein and Calories a day that person should consume to fulfill his goal. Do not include Important Considerations"),
-            ModelContent(role: "model", parts: "{\n  \"protein\": 140,\n  \"calories\": 2800\n}\n```\n\n**Important Considerations:**\n\n* This is a general guideline and may not be suitable for everyone. \n* It is important to consult with a healthcare professional or registered dietitian to determine the appropriate protein and calorie intake for your individual needs.\n* Factors such as activity level, training intensity, and individual goals will influence optimal protein and calorie intake.\n* This information is not intended to provide medical advice and should not be used to replace the advice of a qualified healthcare professional. \n")])
+          ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, in a Json file give me the exact number(not in range) of protein, Calories, sugars, and Carbs, BurnCalories (that that person needs to burn daily), and water a day that person should consume to fulfill his goal. Do not include Important Considerations"),
+          ModelContent(role: "model", parts: "```json\n{\n  \"protein\": 120, \n  \"calories\": 2800, \n  \"sugars\": 50, \n  \"carbs\": 300, \n  \"burnCalories\": 2000, \n  \"water\": 3.5 \n}\n```\n\n**Important Considerations:**\n\n* This is a **general guideline** and individual needs may vary.\n* It is **essential to consult with a qualified healthcare professional** before making significant changes to your diet or exercise routine.\n* **Individual factors** such as activity level, metabolism, and genetics will influence your specific needs.\n* **Consistency and gradual progression** are crucial for achieving sustainable results.\n* **Monitoring your progress and adjusting accordingly** is important to ensure optimal results. \n")
+        ])
+
         let chatt = model.startChat(history: [
             ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, in a Json file give me a list of excercises to train every muscule and divide them in 4 days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for 1 - 2  hours. The format should be: day number it corresponds to, name of the excersise, repetitions, number of series and the approx calories burned. Ignore recomendations!"),
             ModelContent(role: "model", parts: "```json\n{\n  \"workout_plan\": [\n    {\n      \"day\": 1,\n      \"muscle_group\": \"Chest\",\n      \"exercises\": [\n        {\n          \"name\": \"Barbell Bench Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"Incline Dumbbell Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Decline Dumbbell Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Cable Crossovers\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Push-ups\",\n          \"reps\": As many as possible (AMRAP),\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"muscle_group\": \"Back\",\n      \"exercises\": [\n        {\n          \"name\": \"Pull-ups\",\n          \"reps\": As many as possible (AMRAP),\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Barbell Rows\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"T-Bar Row\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Lat Pulldowns\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Seated Cable Rows\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"muscle_group\": \"Legs\",\n      \"exercises\": [\n        {\n          \"name\": \"Squats\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 300-400\n        },\n        {\n          \"name\": \"Leg Press\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"Leg Extensions\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Hamstring Curls\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Calf Raises\",\n          \"reps\": 15-20,\n          \"sets\": 3,\n          \"calories_burned\": 50-100\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"muscle_group\": \"Shoulders & Arms\",\n      \"exercises\": [\n        {\n          \"name\": \"Overhead Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Lateral Raises\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Front Raises\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Barbell Bicep Curls\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Hammer Curls\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Triceps Pushdowns\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Close-Grip Bench Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        }\n      ]\n    }\n  ]\n}\n```")
         ])
         
         Task {
-            do {
-                let response1 = try await chat.sendMessage(message1)
-                let response2 = try await chatt.sendMessage(message2)
-                try await extractWorkoutPlan(from: response2.text ?? "")
-                try await extractNutrition(from: response1.text ?? "")
-            } catch {
-                print("Error: \(error)")
+            if height != 0{
+                do {
+                    let response1 = try await chat.sendMessage(message1)
+                    let response2 = try await chatt.sendMessage(message2)
+                    try await extractWorkoutPlan(from: response2.text ?? "")
+                    try await extractNutrition(from: response1.text ?? "")
+                } catch {
+                    print("Error: \(error)")
+                }
             }
+            else{
             
-            if age > 18  && height > 40 && weight > 40{
+                do {
+                    let response1 = try await chat.sendMessage(message3)
+                    let response2 = try await chatt.sendMessage(message4)
+                    try await extractWorkoutPlan(from: response2.text ?? "")
+                    try await extractNutrition(from: response1.text ?? "")
+                } catch {
+                    print("Error: \(error)")
+                }
+            }
+            if age > 18  && ((height > 40 && weight > 40) || (heightFt > 3 && weight > 100)) {
                 let urlString = Constants.baseURL + EndPoints.users
                 
                 guard let url = URL(string: urlString) else {
                     throw HttpEroor.badURL
                 }
                 
-                guard let pap = URL(string: "\(Constants.baseURL)\(EndPoints.users)/checkEmail?email=\(email)") else{
-                    return
-                }
-                let task = URLSession.shared.dataTask(with: pap) { data, response, error in
-                    if let response = response as? HTTPURLResponse {
-                        switch response.statusCode {
-                        case 200:
-                            print("Email is found in the database")
-                        case 404:
-                            print("Email is not found in the database")
-                        default:
-                            print("Unknown response status: \(response.statusCode)")
-                        }
-                    }
-                }
-                task.resume()
                 
-                let user = User(id: nil, firstName: self.firstName, lastName: self.lastName, age: self.age, gender: self.gender, weight: self.weight, goal: self.goal, bodyStructure: self.bodyStructure, height: self.height, DailyCalories: self.DailyCalories, DailyProtein: self.DailyProtein, email: self.email, password: self.password, numHours: self.numHours, numDays: self.numDays)
-//                
+                let user = User(id: nil, firstName: self.firstName, lastName: self.lastName, age: self.age, gender: self.gender, weight: self.weight, goal: self.goal, bodyStructure: self.bodyStructure, height: self.height, DailyCalories: self.DailyCalories, DailyProtein: self.DailyProtein, email: self.email, password: self.password, heightFt: self.heightFt,heightInc: self.heightIn,numHours: self.numHours, numDays: self.numDays, sugars: self.sugars ?? 0, carbs: self.carbs ?? 1, burnCalories: self.DalyCaloriesBurn ?? 0, water: self.water ?? 0.0 )
+//
 //                let user = User(id: nil, firstName: self.firstName, lastName: self.lastName, age: self.age, gender: self.gender, weight: self.weight, goal: self.goal, bodyStructure: self.bodyStructure, height: self.height, DailyCalories: self.DailyCalories, DailyProtein: self.DailyProtein, email: self.email, password: self.password, numHours: self.numHours, numDays: self.numDays, excersises: excersise!)
                 
                 let fullTrainings = fullTraining(id: nil, email: self.email, userExcersises: excersise!)
@@ -205,13 +249,17 @@ struct finalData: View {
                 print("Error converting JSON string to data")
                 return
             }
-            
+            print(trimmedResponse)
             // Decode the JSON data
             let jsonDecoder = JSONDecoder()
             do {
                 let nutritions = try jsonDecoder.decode(userNutrition.self, from: jsonData)
                 self.DailyCalories = nutritions.calories
                 self.DailyProtein = nutritions.protein
+                self.carbs = nutritions.carbs
+                self.sugars = nutritions.sugars
+                self.water = nutritions.water
+                self.DalyCaloriesBurn = nutritions.burnCalories
                 print("Person -- \(nutritions.calories)")
                 print("Saved calories = \(DailyCalories)")
             } catch {

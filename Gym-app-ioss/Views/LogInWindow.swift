@@ -46,6 +46,7 @@ struct LogInWindow: View {
                                 }.padding(.top)
                             }
                             Button {
+                                self.username = username.uppercased()
                                 authenticateUser(username, password)
                             } label: {
                                 Text("LogIn").padding().foregroundColor(.white).frame(width: 300, height: 50).background(Color.blue).cornerRadius(10)
@@ -66,6 +67,7 @@ struct LogInWindow: View {
         guard let url = URL(string: "\(Constants.baseURL)\(EndPoints.users)/checkCredentials?email=\(user)&password=\(password)") else {
             return
         }
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let response = response as? HTTPURLResponse {
                 switch response.statusCode {

@@ -33,13 +33,13 @@ struct Calories: View {
                     Spacer()
                     VStack(alignment: .center) {
                         CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
-                        Text("Your Calories goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1) 🔥").font(.title3)
+                        Text("Your Sugar goal: \(CaloriesManager.shared.calories) / \(mainUser?.sugars ?? 1) ").font(.title3)
                         Spacer()
                     }.frame(width: 200,height: 300)
                     Spacer()
                     VStack(alignment: .center){
                         CircularProgressBar(progress: ProteinManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
-                        Text("Your Protein goal: \(ProteinManager.shared.protein) / \(mainUser?.DailyProtein ?? 1) 🍗").font(.title3)
+                        Text("Your Water goal: \(ProteinManager.shared.protein) / \(mainUser?.water ?? 1) 🍗").font(.title3)
                         Spacer()
                     }.frame(width: 200,height: 300)
                     Spacer()
