@@ -38,6 +38,7 @@ struct finalData: View {
     @State var carbs :Int?
     @State var sugars: Int?
     @State var DalyCaloriesBurn: Int?
+    var whereWork : String
     
     @State var water: Double?
     
@@ -155,15 +156,15 @@ struct finalData: View {
         
         
             let message1 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
-            let message2 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
+            let message2 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal) working out at \(whereWork), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
        
             let message3 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
-            let message4 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
+            let message4 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal)working out at \(whereWork), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
             
       
         
         let chat = model.startChat(history: [
-          ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, in a Json file give me the exact number(not in range) of protein, Calories, sugars, and Carbs, BurnCalories (that that person needs to burn daily), and water a day that person should consume to fulfill his goal. Do not include Important Considerations"),
+          ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass at gym, in a Json file give me the exact number(not in range) of protein, Calories, sugars, and Carbs, BurnCalories (that that person needs to burn daily), and water a day that person should consume to fulfill his goal. Do not include Important Considerations"),
           ModelContent(role: "model", parts: "```json\n{\n  \"protein\": 120, \n  \"calories\": 2800, \n  \"sugars\": 50, \n  \"carbs\": 300, \n  \"burnCalories\": 2000, \n  \"water\": 3.5 \n}\n```\n\n**Important Considerations:**\n\n* This is a **general guideline** and individual needs may vary.\n* It is **essential to consult with a qualified healthcare professional** before making significant changes to your diet or exercise routine.\n* **Individual factors** such as activity level, metabolism, and genetics will influence your specific needs.\n* **Consistency and gradual progression** are crucial for achieving sustainable results.\n* **Monitoring your progress and adjusting accordingly** is important to ensure optimal results. \n")
         ])
 
@@ -316,6 +317,6 @@ struct finalData: View {
 
 struct finalData_Previews: PreviewProvider {
     static var previews: some View {
-        finalData(firstName: "da", lastName: "dad", gender: "dad", goal: "dasda", bodyStructure: "dasda", email: "adad", password: "dsada",numDays: 5, numHours: "2")
+        finalData(firstName: "da", lastName: "dad", gender: "dad", goal: "dasda", bodyStructure: "dasda", email: "adad", password: "dsada",numDays: 5, numHours: "2", whereWork: "Gym")
     }
 }

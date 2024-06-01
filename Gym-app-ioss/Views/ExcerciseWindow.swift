@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+ 
 struct ExcerciseWindow: View {
     
     var mainUser: User?
@@ -15,11 +16,9 @@ struct ExcerciseWindow: View {
     var userFullWork: fullTraining?
     @State var persistenceManager = PersistenceManager()
     @State var LogOut: Bool = false
-    
+    @State var exToday: String = ""
     @State var counts: Int?
     var body: some View {
-    
-        
         if LogOut {
             LogInWindow()
         }
@@ -28,13 +27,12 @@ struct ExcerciseWindow: View {
         else{
             NavigationView {
                 VStack {
-                    // Your main content
-                    
-                    
-                    // Spacer to push navigation bar to the bottom
-                    
-                    if( whichWin == 0 ){
-                        FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: [])  )
+            
+                    if (exToday != "" && whichWin == 0){
+                        WorkOutWindow(mainUser: self.mainUser, userFullWork: self.userFullWork, exToday: $exToday)
+                    }
+                    else if( whichWin == 0 ){
+                        FisrtWindow(mainUser: self.mainUser,userFullWork: self.userFullWork, viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), exToday: $exToday  )
                     }
                     else if(whichWin == 1){
                         NutritionView( viewModel: ListViewModel(items: []), viewModel2: ListViewModel(items: []), persistenceManager: $persistenceManager)

@@ -10,6 +10,8 @@
 		4349A6892BFE606400684853 /* workoutVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A6882BFE606400684853 /* workoutVieModel.swift */; };
 		4349A68B2C00CB0400684853 /* PersistanceFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349A68A2C00CB0400684853 /* PersistanceFood.swift */; };
 		4376F4092C02685C00937885 /* PersiatnceCalories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F4082C02685C00937885 /* PersiatnceCalories.swift */; };
+		4376F40E2C093E5A00937885 /* WorkOutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F40D2C093E5A00937885 /* WorkOutWindow.swift */; };
+		4376F4102C09E91100937885 /* staringWorkWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F40F2C09E91100937885 /* staringWorkWindow.swift */; };
 		43B1943F2AC760F5002CF64D /* MainWindow2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1943E2AC760F5002CF64D /* MainWindow2.swift */; };
 		43C27BF62BEC3DAE00A73F0F /* ExcerciseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */; };
 		43C27BF82BEC5CCA00A73F0F /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */; };
@@ -45,6 +47,8 @@
 		4349A68A2C00CB0400684853 /* PersistanceFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceFood.swift; sourceTree = "<group>"; };
 		4376F4082C02685C00937885 /* PersiatnceCalories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersiatnceCalories.swift; sourceTree = "<group>"; };
 		4376F40A2C03F49300937885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4376F40D2C093E5A00937885 /* WorkOutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutWindow.swift; sourceTree = "<group>"; };
+		4376F40F2C09E91100937885 /* staringWorkWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staringWorkWindow.swift; sourceTree = "<group>"; };
 		43B1943E2AC760F5002CF64D /* MainWindow2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow2.swift; sourceTree = "<group>"; };
 		43C27BF52BEC3DAE00A73F0F /* ExcerciseWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseWindow.swift; sourceTree = "<group>"; };
 		43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				43C27BF72BEC5CCA00A73F0F /* NutritionView.swift */,
 				43C27BFF2BF24DEC00A73F0F /* Calories.swift */,
 				43C27BFB2BF246FE00A73F0F /* UserSettings.swift */,
+				4376F40D2C093E5A00937885 /* WorkOutWindow.swift */,
+				4376F40F2C09E91100937885 /* staringWorkWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,12 +281,14 @@
 				43C27BF62BEC3DAE00A73F0F /* ExcerciseWindow.swift in Sources */,
 				43CDA0372AA56D74000BCA3B /* LogedInUser.swift in Sources */,
 				43C27BFA2BEC5EC600A73F0F /* Food.swift in Sources */,
+				4376F40E2C093E5A00937885 /* WorkOutWindow.swift in Sources */,
 				43CDA01B2A8C654E000BCA3B /* questionaire.swift in Sources */,
 				43C27BFC2BF246FE00A73F0F /* UserSettings.swift in Sources */,
 				43CDA0172A8C491B000BCA3B /* MainWindow.swift in Sources */,
 				43C27C002BF24DEC00A73F0F /* Calories.swift in Sources */,
 				43CDA0092A8C479C000BCA3B /* Gym_app_iossApp.swift in Sources */,
 				43C27BFE2BF24A7300A73F0F /* FisrtWindow.swift in Sources */,
+				4376F4102C09E91100937885 /* staringWorkWindow.swift in Sources */,
 				43C27C052BF2D5AC00A73F0F /* Gemini.swift in Sources */,
 				43CDA0202A8D8444000BCA3B /* User.swift in Sources */,
 				43CDA0232A8D8547000BCA3B /* Constants.swift in Sources */,

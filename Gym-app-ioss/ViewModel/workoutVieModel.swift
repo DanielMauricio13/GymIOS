@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ExcListItem: Identifiable {
         var id = UUID()
-    var title: String
+        var title: String
         var description: String
         var totalCalories: Int
         var duration: Int

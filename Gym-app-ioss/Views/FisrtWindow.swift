@@ -16,6 +16,7 @@ struct FisrtWindow: View {
     @State var temp = ""
     @State var HIITitem: ExcListItem?
     @StateObject var viewModel2: ListViewModel
+    @Binding  var exToday: String
     
     var body: some View {
         VStack{
@@ -39,7 +40,7 @@ struct FisrtWindow: View {
                 VStack {
                     Spacer()
                     ForEach(viewModel.items) { item in
-                        ExpandableBoxView(item: item)
+                        ExpandableBoxView(item: item, exToday: $exToday)
                             .onTapGesture {
                                 viewModel.toggleExpand(for: item)
                             }
@@ -54,7 +55,7 @@ struct FisrtWindow: View {
                         .shadow(color: .red, radius: 30,y: 1)
                         .underline()
                     ForEach(viewModel2.items) { item in
-                        ExpandableBoxView(item: item)
+                        ExpandableBoxView(item: item, exToday: $exToday)
                             .onTapGesture {
                                 viewModel2.toggleExpand(for: item)
                             }
@@ -67,13 +68,16 @@ struct FisrtWindow: View {
             
             
         }.onAppear{
+            var cal = 0
             for i in 0..<(userFullWork?.userExcersises.workout_plan.count  ?? 1){
                 for j in 0..<(userFullWork?.userExcersises.workout_plan[i].exercises.count ?? 1)
                 {
                     temp += "\n\(userFullWork?.userExcersises.workout_plan[i].exercises[j].name ?? "failed"): \(userFullWork?.userExcersises.workout_plan[i].exercises[j].sets ?? 1) sets, \(userFullWork?.userExcersises.workout_plan[i].exercises[j].reps ?? "failed") reps"
+                    cal += userFullWork?.userExcersises.workout_plan[i].exercises[j].calories_burned ?? 0
                 }
-                viewModel.items.append(ExcListItem( title: userFullWork?.userExcersises.workout_plan[i].muscle_group ?? "failed",description: temp, totalCalories: 150, duration: 20, NumExcersises: userFullWork?.userExcersises.workout_plan[i].exercises.count ?? 2))
-                temp=""
+                viewModel.items.append(ExcListItem( title: userFullWork?.userExcersises.workout_plan[i].muscle_group ?? "failed",description: temp, totalCalories: cal, duration: 20, NumExcersises: userFullWork?.userExcersises.workout_plan[i].exercises.count ?? 2))
+                temp = ""
+                cal = 0
                 
             }
             
@@ -102,15 +106,16 @@ struct FisrtWindow: View {
     
     struct ExpandableBoxView: View {
         var item: ExcListItem
-        
+       @Binding  var exToday:String
         var body: some View {
             VStack(alignment: .leading) {
-                Text(item.title)
-                    .font(.headline)
-                    .lineLimit(1) // Limit title to one line
-                    .truncationMode(.tail) // Truncate if it’s too long
-                    .frame(maxWidth: .infinity, alignment: .leading) // Ensure full width
-                
+                HStack{
+                    Text(item.title)
+                        .font(.headline)
+                        .lineLimit(1) // Limit title to one line
+                        .truncationMode(.tail) // Truncate if it’s too long
+                        .frame(maxWidth: .infinity, alignment: .leading) // Ensure full width
+                }
                 if item.isExpanded {
                     Text(item.description)
                         .font(.subheadline)
@@ -122,7 +127,7 @@ struct FisrtWindow: View {
                     HStack {
                         
                             Spacer() // Center the button
-                            Button(action: {}) {
+                        Button(action: {exToday = item.title}) {
                                 Text("Start")
                                     .font(.title2)
                                     .frame(width: 150, height: 40) // Set a fixed width for the button

@@ -62,8 +62,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "extractNutrition(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "extractNutrition(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "extractWorkoutPlan(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "geminii()"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "geminii()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "geminii()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "Gym-app-ioss/Views/FisrtWindow.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "currentDayOfWeek()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "Gym-app-ioss/Views/FisrtWindow.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -398,8 +398,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -430,8 +430,8 @@
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "geminii()"
             landmarkType = "7">
          </BreakpointContent>
@@ -440,6 +440,38 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "013D6B27-DC38-4411-BB9F-ABFF4B370B20"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/finalData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "geminii()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "646BFF75-61FA-4199-8378-16D82B16BB59"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/finalData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "geminii()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE7C627C-FB25-4F00-829E-C8109A08C269"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -455,349 +487,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "646BFF75-61FA-4199-8378-16D82B16BB59"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gym-app-ioss/Views/finalData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "geminii()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE7C627C-FB25-4F00-829E-C8109A08C269"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gym-app-ioss/Views/finalData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "geminii()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "85012994-3A92-45C0-B0B7-3200555C4126"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "geminii()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 6fbbdc9295c0a6c7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - c97f7fcba35f483"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(17) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 306fade4538d73bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(22) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 49b87e9203d3d2be"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(23) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - e1ca0f982c2635bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(24) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 3914d086dc0c94bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(25) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 52a6e18c8c52f783"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(26) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - eaf0b2babcb95682"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(27) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 23d43a16c8fc981"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(28) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "85012994-3A92-45C0-B0B7-3200555C4126 - 5a4f14af1cd22880"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(29) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "599F42BC-C58C-4177-B5BF-389D92671813"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gym-app-ioss/Views/finalData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "geminii()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 6fbbdc9295c0a7cf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - c97f7fcba35f58b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(17) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 306fade4538d72b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(22) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 49b87e9203d3d3b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(23) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - e1ca0f982c2634b5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(24) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 3914d086dc0c95b4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(25) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 52a6e18c8c52f68b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(26) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - eaf0b2babcb9578a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(27) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 23d43a16c8fc889"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(28) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-               <Location
-                  uuid = "599F42BC-C58C-4177-B5BF-389D92671813 - 5a4f14af1cd22988"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(29) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Gym_app_ioss.finalData.geminii() async throws -&gt; ()"
-                  moduleName = "Gym-app-ioss"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danielpinilla/projects/GYM/GymIOS/Gym-app-ioss/Views/finalData.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0F859D4-1D5B-4E5D-A9B3-00B585A3A92F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/finalData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "geminii()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9DD4E4A-D6CE-4F7F-9159-2B661D3DEA0B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/WorkOutWindow.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C373213-2D9C-42FE-A714-2DB51CAAB5CE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/WorkOutWindow.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F5C061C-0A9E-46D2-B35D-1874710710F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gym-app-ioss/Views/staringWorkWindow.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

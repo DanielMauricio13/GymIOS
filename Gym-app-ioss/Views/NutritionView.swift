@@ -52,7 +52,7 @@ struct NutritionView: View {
                                                 .foregroundColor(.white)
                                         }
                                         .foregroundColor(.white)
-                                    }
+                                    }.frame(width: 450)
                                     .foregroundColor(.white)
                                     .bold()
                                 }
