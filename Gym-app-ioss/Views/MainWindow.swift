@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import KeychainAccess
+
 
 struct MainWindow: View {
     let email: String
@@ -16,6 +18,7 @@ struct MainWindow: View {
     @State var whichDay:Int?
     @State var numDayssUs: Int? = 1
     @State var userFullWork: fullTraining?
+    @State public var userFound: Bool = true
     var body: some View {
         NavigationView {
             ZStack {
@@ -35,7 +38,12 @@ struct MainWindow: View {
 //                            }
 //                        }
 //                    }
-                    MainWindow2(mainUser: mainUser, userFullWork: self.userFullWork)
+                    if userFound {
+                        MainWindow2(mainUser: mainUser, userFullWork: self.userFullWork)
+                    }else{
+                        
+                        LogInWindow()
+                    }
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -50,6 +58,7 @@ struct MainWindow: View {
                         isLoading = false
                     case .failure(let error):
                         // Handle any errors here
+                        logout()
                         print("Error fetching user info:", error)
                         
                     }
@@ -77,37 +86,47 @@ struct MainWindow: View {
         }
     }
 
+    
 
-    
-    
     func fetchUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
-        guard let apiUrl = URL(string: "\(Constants.baseURL)\(EndPoints.users)getUserInfo?email=\(self.email)") else {
-            completion(.failure(URLError.badURL as! Error))
+        guard let apiUrl = URL(string: "\(Constants.baseURL)profile?email=\(self.email)") else {
+            logout()
+            completion(.failure(URLError(.badURL)))
             return
         }
-        
+       
         var request = URLRequest(url: apiUrl)
         request.httpMethod = "GET"
+        
+        // Retrieve the JWT token from UserDefaults
+        if let token = UserDefaults.standard.string(forKey: "jwtToken") {
+            // Add the Authorization header
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        } else {
+            logout()
+            completion(.failure(NetworkError.noToken))
+            return
+        }
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
+                logout()
                 completion(.failure(error))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 completion(.failure(NetworkError.invalidResponse))
+                logout()
                 return
             }
             
             guard let jsonData = data else {
                 completion(.failure(NetworkError.noData))
+                logout()
                 return
             }
-//            if let jsonString = String(data: jsonData, encoding: .utf8) {
-////                        print("Received JSON data:\n\(jsonString)")
-//                    }
             
             do {
                 let user = try JSONDecoder().decode(User.self, from: jsonData)
@@ -116,12 +135,59 @@ struct MainWindow: View {
                 }
             } catch {
                 DispatchQueue.main.async {
+                    logout()
                     completion(.failure(error))
                 }
             }
         }
         task.resume()
     }
+
+
+    
+    
+//    func fetchUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
+//        guard let apiUrl = URL(string: "\(Constants.baseURL)\(EndPoints.users)profile?email=\(self.email)") else {
+//            completion(.failure(URLError.badURL as! Error))
+//            return
+//        }
+//        
+//        var request = URLRequest(url: apiUrl)
+//        request.httpMethod = "GET"
+//        
+//        let session = URLSession.shared
+//        let task = session.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                completion(.failure(error))
+//                return
+//            }
+//            
+//            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+//                completion(.failure(NetworkError.invalidResponse))
+//                return
+//            }
+//            
+//            guard let jsonData = data else {
+//                completion(.failure(NetworkError.noData))
+//                return
+//            }
+////            if let jsonString = String(data: jsonData, encoding: .utf8) {
+//////                        print("Received JSON data:\n\(jsonString)")
+////                    }
+//            
+//            do {
+//                let user = try JSONDecoder().decode(User.self, from: jsonData)
+//                DispatchQueue.main.async {
+//                    completion(.success(user))
+//                }
+//            } catch {
+//                DispatchQueue.main.async {
+//                    completion(.failure(error))
+//                }
+//            }
+//        }
+//        task.resume()
+//    }
 
     func fetchExerciseData(completion: @escaping (Result<fullTraining, Error>) -> Void) {
             // Replace this URL with your Vapor server endpoint
@@ -171,6 +237,7 @@ struct MainWindow: View {
     enum NetworkError: Error {
         case invalidResponse
         case noData
+        case noToken
     }
     enum APIError: Error {
         case networkError(Error)
@@ -190,11 +257,14 @@ struct MainWindow: View {
         var repetitions: String
     }
 
-    
-}
-
-struct MainWindow_Previews: PreviewProvider {
-    static var previews: some View {
-        MainWindow(email: "null")
+    func logout()->Void {
+        UserDefaults.standard.removeObject(forKey: "isAuthenticated")
+        UserDefaults.standard.removeObject(forKey: "username")
+        CaloriesManager.shared.calories = 0
+        ProteinManager.shared.protein = 0
+        userFound = false
+      //  persistenceManager.clearItems()
     }
 }
+
+

@@ -23,6 +23,7 @@
 		43C27C082BF2D5EC00A73F0F /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */; };
 		43C27C0A2BF2D6DD00A73F0F /* geminii.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C27C092BF2D6DD00A73F0F /* geminii.swift */; };
 		43C27C0C2BF2DA0200A73F0F /* GenerativeAi-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43C27C0B2BF2DA0200A73F0F /* GenerativeAi-Info.plist */; };
+		43C393872C14DEB500060774 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 43C393862C14DEB500060774 /* KeychainAccess */; };
 		43CDA0092A8C479C000BCA3B /* Gym_app_iossApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0082A8C479C000BCA3B /* Gym_app_iossApp.swift */; };
 		43CDA00B2A8C479C000BCA3B /* LogInWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA00A2A8C479C000BCA3B /* LogInWindow.swift */; };
 		43CDA00D2A8C479D000BCA3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CDA00C2A8C479D000BCA3B /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C393872C14DEB500060774 /* KeychainAccess in Frameworks */,
 				43C27C082BF2D5EC00A73F0F /* GoogleGenerativeAI in Frameworks */,
 				43CDA0332A9446DA000BCA3B /* OpenAISwift in Frameworks */,
 				43CDA0302A9446C7000BCA3B /* OpenAIKit in Frameworks */,
@@ -205,6 +207,7 @@
 				43CDA02F2A9446C7000BCA3B /* OpenAIKit */,
 				43CDA0322A9446DA000BCA3B /* OpenAISwift */,
 				43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */,
+				43C393862C14DEB500060774 /* KeychainAccess */,
 			);
 			productName = "Gym-app-ioss";
 			productReference = 43CDA0052A8C479C000BCA3B /* Gym-app-ioss.app */;
@@ -238,6 +241,7 @@
 				43CDA02E2A9446C7000BCA3B /* XCRemoteSwiftPackageReference "OpenAIKit" */,
 				43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				43C393852C14DEB500060774 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 43CDA0062A8C479C000BCA3B /* Products */;
 			projectDirPath = "";
@@ -521,6 +525,14 @@
 				minimumVersion = 0.5.3;
 			};
 		};
+		43C393852C14DEB500060774 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		43CDA02E2A9446C7000BCA3B /* XCRemoteSwiftPackageReference "OpenAIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MarcoDotIO/OpenAIKit";
@@ -544,6 +556,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
 			productName = GoogleGenerativeAI;
+		};
+		43C393862C14DEB500060774 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43C393852C14DEB500060774 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		43CDA02F2A9446C7000BCA3B /* OpenAIKit */ = {
 			isa = XCSwiftPackageProductDependency;

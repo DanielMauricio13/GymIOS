@@ -53,6 +53,24 @@ class HttpClient{
         }
         
     }
+    
+    func sendData2<T: Encodable>(to url: URL, object: T?, httpMethod: String) async throws -> Data {
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        if let object = object {
+            request.httpBody = try JSONEncoder().encode(object)
+        }
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+
+        return data
+    }
     func delete(at id:UUID, url: URL) async throws{
         var request = URLRequest(url: url)
         request.httpMethod = HttpMethods.DELETE.rawValue

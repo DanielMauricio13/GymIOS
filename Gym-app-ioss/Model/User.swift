@@ -35,6 +35,7 @@ struct User: Identifiable, Codable{
     
 }
 
+
 struct userNutrition: Codable{
     var protein: Int
     var calories: Int
