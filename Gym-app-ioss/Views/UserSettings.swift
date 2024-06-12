@@ -18,7 +18,7 @@ struct UserSettings: View {
                 logout()
                 LogOut = true
             }label: {
-                Text("Log out").font(.title3).foregroundStyle(Color.white).background(RoundedRectangle(cornerRadius: 90).foregroundStyle(Color.red).frame(width: 150, height: 50) )
+                Text("Log out").font(.title3).foregroundStyle(Color.white).background(RoundedRectangle(cornerRadius: 90).foregroundStyle(Color.red).frame(width: 150, height: 50) ).padding(.bottom)
             }
             
         }
@@ -26,8 +26,10 @@ struct UserSettings: View {
     func logout()->Void {
         UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         UserDefaults.standard.removeObject(forKey: "username")
-        CaloriesManager.shared.calories = 0
-        ProteinManager.shared.protein = 0
+        HealthManager.shared.calories = 0
+        HealthManager.shared.protein = 0
+        HealthManager.shared.carbs = 0
+        HealthManager.shared.sugars = 0
         persistenceManager.clearItems()
     }
     

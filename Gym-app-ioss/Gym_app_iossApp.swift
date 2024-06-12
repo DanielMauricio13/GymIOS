@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Gym_app_iossApp: App {
+    @StateObject private var healthManager = HealthManager.shared
     var body: some Scene {
         WindowGroup {
-            LogInWindow()
+            LogInWindow().environmentObject(healthManager)
         }
     }
 }

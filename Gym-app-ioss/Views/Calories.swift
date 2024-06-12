@@ -11,41 +11,45 @@ struct Calories: View {
     var mainUser: User?
      
     var body: some View {
-        
-            VStack {
-                Text("Todays Nutrition").font(.largeTitle).bold()
-                HStack{
+        Text("Todays Nutrition").font(.largeTitle).bold() .italic()
+            .shadow(color: .white, radius: 10)
+        ScrollView{
+            
+        VStack {
+            
+            HStack{
+                Spacer()
+                VStack(alignment: .center) {
+                    CircularProgressBar(progress: HealthManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
+                    Text("Your Calories goal: \(HealthManager.shared.calories) / \(mainUser?.DailyCalories ?? 1) 🔥").font(.title3).foregroundStyle(Color.white).shadow(color: .red, radius: 10)
                     Spacer()
-                    VStack(alignment: .center) {
-                        CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
-                        Text("Your Calories goal: \(CaloriesManager.shared.calories) / \(mainUser?.DailyCalories ?? 1) 🔥").font(.title3)
-                        Spacer()
-                    }.frame(width: 200,height: 300)
+                }.frame(width: 200,height: 300)
+                Spacer()
+                VStack(alignment: .center){
+                    CircularProgressBar(progress: HealthManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
+                    Text("Your Protein goal: \(HealthManager.shared.protein) / \(mainUser?.DailyProtein ?? 1) 🍗").font(.title3).foregroundStyle(Color.white).shadow(color: .red, radius: 10)
                     Spacer()
-                    VStack(alignment: .center){
-                        CircularProgressBar(progress: ProteinManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
-                        Text("Your Protein goal: \(ProteinManager.shared.protein) / \(mainUser?.DailyProtein ?? 1) 🍗").font(.title3)
-                        Spacer()
-                    }.frame(width: 200,height: 300)
-                    Spacer()
-                }
-                HStack{
-                    Spacer()
-                    VStack(alignment: .center) {
-                        CircularProgressBar(progress: CaloriesManager.shared.calories, goal: mainUser?.DailyCalories ?? 1)
-                        Text("Your Sugar goal: \(CaloriesManager.shared.calories) / \(mainUser?.sugars ?? 1) ").font(.title3)
-                        Spacer()
-                    }.frame(width: 200,height: 300)
-                    Spacer()
-                    VStack(alignment: .center){
-                        CircularProgressBar(progress: ProteinManager.shared.protein, goal: mainUser?.DailyProtein ?? 1)
-                        Text("Your Water goal: \(ProteinManager.shared.protein) / \(mainUser?.water ?? 1) 🍗").font(.title3)
-                        Spacer()
-                    }.frame(width: 200,height: 300)
-                    Spacer()
-                }
+                }.frame(width: 200,height: 300)
+                Spacer()
             }
-            .padding()
+            HStack{
+                Spacer()
+                VStack(alignment: .center) {
+                    CircularProgressBar(progress: HealthManager.shared.carbs, goal: mainUser?.carbs ?? 1)
+                    Text("Your Carbs goal: \(HealthManager.shared.carbs) / \(mainUser?.carbs ?? 1) 🥐").font(.title3).foregroundStyle(Color.white).shadow(color: .red, radius: 10)
+                    Spacer()
+                }.frame(width: 200,height: 300)
+                Spacer()
+                VStack(alignment: .center){
+                    CircularProgressBar(progress: HealthManager.shared.sugars, goal: mainUser?.sugars ?? 1)
+                    Text("Your Sugar goal: \(HealthManager.shared.sugars) / \(mainUser?.sugars ?? 1) 🍭").font(.title3).foregroundStyle(Color.white).shadow(color: .red, radius: 10)
+                    Spacer()
+                }.frame(width: 200,height: 300)
+                Spacer()
+            }
+        }
+        .padding()
+    }
         
     }
         
@@ -73,7 +77,8 @@ struct CircularProgressBar: View {
                 
             
             Text(String(format: "%d%%", min(progress * 100 / goal, 100)))
-                .font(.title2)
+                .font(.title)
+                .foregroundStyle(Color.white)
                 .bold()
         }
         .padding(40)

@@ -260,8 +260,8 @@ struct MainWindow: View {
     func logout()->Void {
         UserDefaults.standard.removeObject(forKey: "isAuthenticated")
         UserDefaults.standard.removeObject(forKey: "username")
-        CaloriesManager.shared.calories = 0
-        ProteinManager.shared.protein = 0
+        HealthManager.shared.calories = 0
+        HealthManager.shared.protein = 0
         userFound = false
       //  persistenceManager.clearItems()
     }

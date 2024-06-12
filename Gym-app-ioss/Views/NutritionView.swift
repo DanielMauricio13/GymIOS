@@ -10,6 +10,7 @@ import GoogleGenerativeAI
 
 struct NutritionView: View {
     @State var buttonPressed = false
+    @State var buttonPressed2 = false
     @StateObject var viewModel: ListViewModel
     @StateObject var viewModel2: ListViewModel
     @State  var expandedIndexes = Set<Int>()
@@ -19,6 +20,10 @@ struct NutritionView: View {
     @State var tempFood:Food?
     @State var number: Int = 0
     @State var quantity: String = ""
+    @State var Calories: Int = 0
+    @State var Sugar: Int = 0
+    @State var Carbs: Int = 0
+    @State var Protein: Int = 0
 
     @State var reload = true
     
@@ -28,44 +33,132 @@ struct NutritionView: View {
                     NavigationView {
                         VStack {
                             HStack {
+                                
                                 VStack {
-                                    Form {
-                                        Section(header: Text("Name").foregroundColor(.white)) {
+                                    
+                                        if(buttonPressed2){
+                                            Form {
+                                                Section(header:  Text("Name").foregroundColor(.white) ) {
+                                                    TextField("Food Name", text: $newItemName)
+                                                        .listRowBackground(Color.gray)
+                                                        .foregroundColor(.white)
+                                                }
+                                                .foregroundColor(.white)
+                                                Section(header: Text("Calories")) {
+                                                    TextField("Calories", text: Binding<String>(
+                                                        get: { String(Calories) },
+                                                        set: { if let newValue = Int($0) { Calories = newValue } }
+                                                    ))
+                                                    .keyboardType(.numberPad)
+                                                    .listRowBackground(Color.gray)
+                                                }
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                Section(header: Text("Sugars")) {
+                                                    TextField("Sugars", text: Binding<String>(
+                                                        get: { String(Sugar) },
+                                                        set: { if let newValue = Int($0) { Sugar = newValue } }
+                                                    ))
+                                                    .keyboardType(.numberPad)
+                                                    .listRowBackground(Color.gray)
+                                                }
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                Section(header: Text("Carbs")) {
+                                                    TextField("Carbs", text: Binding<String>(
+                                                        get: { String(Carbs) },
+                                                        set: { if let newValue = Int($0) { Carbs = newValue } }
+                                                    ))
+                                                    .keyboardType(.numberPad)
+                                                    .listRowBackground(Color.gray)
+                                                }
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                Section(header: Text("Protein")) {
+                                                    TextField("Protein", text: Binding<String>(
+                                                        get: { String(Protein) },
+                                                        set: { if let newValue = Int($0) { Protein = newValue } }
+                                                    ))
+                                                    .keyboardType(.numberPad)
+                                                    .listRowBackground(Color.gray)
+                                                }
+                                                .foregroundColor(.white)
+                                                .bold()
+                                            }.frame(width: 450,height: 500)
+                                                .foregroundColor(.white)
+                                                .bold()
+                                        }
+                                        else{
+                                            Form {
+                                            
+                                            Section(header:  Text("Name").foregroundColor(.white) ) {
                                             TextField("Food Name", text: $newItemName)
                                                 .listRowBackground(Color.gray)
                                                 .foregroundColor(.white)
                                         }
                                         .foregroundColor(.white)
-                                        Section(header: Text("Number")) {
-                                            TextField("Number", text: Binding<String>(
-                                                get: { String(number) },
-                                                set: { if let newValue = Int($0) { number = newValue } }
-                                            ))
-                                            .keyboardType(.numberPad)
-                                            .listRowBackground(Color.gray)
-                                        }
-                                        .foregroundColor(.white)
-                                        .bold()
-                                        Section(header: Text("Quantity").foregroundColor(.white)) {
-                                            TextField("Quantity", text: $quantity)
+                                            Section(header: Text("Number")) {
+                                                TextField("Number", text: Binding<String>(
+                                                    get: { String(number) },
+                                                    set: { if let newValue = Int($0) { number = newValue } }
+                                                ))
+                                                .keyboardType(.numberPad)
                                                 .listRowBackground(Color.gray)
-                                                .foregroundColor(.white)
-                                        }
-                                        .foregroundColor(.white)
-                                    }.frame(width: 450)
-                                    .foregroundColor(.white)
-                                    .bold()
+                                            }
+                                            .foregroundColor(.white)
+                                            .bold()
+                                            Section(header: Text("Quantity or description").foregroundColor(.white)) {
+                                                TextField("Quantity or description", text: $quantity)
+                                                    .listRowBackground(Color.gray)
+                                                    .foregroundColor(.white)
+                                            }
+                                            .foregroundColor(.white)
+                                        }.frame(width: 450,height: 300)
+                                            .foregroundColor(.white)
+                                            .bold()
+                                        
+                                    }
                                 }
+                              
                             }
-                            Button(action: {
-                                                    Task {
-                                                        try await geminii()
-                                                    }
-                                                }) {
-                                                    Text("Add")
-                                                        .font(.title)
-                                                }
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                Button{
+                                    buttonPressed2 = true
+                                }label: {
+                                    Text("Custom").font(.title3).foregroundStyle(Color.white).background(RoundedRectangle(cornerRadius: 90).foregroundStyle(Color.accentColor).frame(width: 150, height: 50) ).padding(.bottom)
+                                }
+                                Spacer(minLength: 150)
+                                Button(action: {
+                                    if buttonPressed2{
+                                        tempFood = Food(Name: newItemName, Calories: Calories, Sugars: Sugar, Carbohydrates: Carbs, Protein: Protein)
+                                        addItem()
+                                        HealthManager.shared.calories += tempFood?.Calories ?? 0
+                                        HealthManager.shared.sugars += tempFood?.Sugars ?? 0
+                                        HealthManager.shared.protein += tempFood?.Protein ?? 0
+                                        HealthManager.shared.carbs += tempFood?.Carbohydrates ?? 0
+                                        newItemName = ""
+                                        self.number = 0
+                                        self.quantity = ""
+                                        
+                                      
+                                        buttonPressed = false
+                                    }else {
+                                        
+                                    
+                                    Task {
+                                        try await geminii()
+                                    }
+                                }
+                                }) {
+                                    Text("Add").font(.title3).foregroundStyle(Color.white).background(RoundedRectangle(cornerRadius: 90).foregroundStyle(Color.red).frame(width: 150, height: 50) ).padding(.bottom)
+                                }
+                                Spacer()
+                            }
+                            Spacer()
                         }
+                        
                         .padding()
                         .navigationTitle("Add Food")
                         .onAppear {
@@ -129,10 +222,35 @@ struct NutritionView: View {
         }
      func deleteItems(at offsets: IndexSet) {
             items.remove(atOffsets: offsets)
+         if HealthManager.shared.calories < 0{
+             HealthManager.shared.calories = 0
+         }
+         if HealthManager.shared.protein < 0{
+             HealthManager.shared.protein = 0
+         }
+         if HealthManager.shared.sugars < 0{
+             HealthManager.shared.sugars = 0
+         }
+         if HealthManager.shared.carbs < 0{
+             HealthManager.shared.carbs = 0
+         }
             persistenceManager.saveItems(items: items)
+         
         }
     func deleteItemss(name:String) {
         persistenceManager.clearItem(byName: name)
+        if HealthManager.shared.calories < 0{
+            HealthManager.shared.calories = 0
+        }
+        if HealthManager.shared.protein < 0{
+            HealthManager.shared.protein = 0
+        }
+        if HealthManager.shared.sugars < 0{
+            HealthManager.shared.sugars = 0
+        }
+        if HealthManager.shared.carbs < 0{
+            HealthManager.shared.carbs = 0
+        }
        }
     
     
@@ -270,9 +388,10 @@ func extractFood(from response: String) async throws{
             let nutritions = try jsonDecoder.decode(Food.self, from: jsonData)
             tempFood = nutritions
             addItem()
-            CaloriesManager.shared.calories += tempFood?.Calories ?? 0
-            
-            ProteinManager.shared.protein += tempFood?.Protein ?? 0
+            HealthManager.shared.calories += tempFood?.Calories ?? 0
+            HealthManager.shared.sugars += tempFood?.Sugars ?? 0
+            HealthManager.shared.protein += tempFood?.Protein ?? 0
+            HealthManager.shared.carbs += tempFood?.Carbohydrates ?? 0
             newItemName = ""
             self.number = 0
             self.quantity = ""
@@ -284,8 +403,10 @@ func extractFood(from response: String) async throws{
                 for i in 0..<nutritions.meal.count {
                     tempFood = nutritions.meal[i]
                     addItem()
-                    CaloriesManager.shared.calories += tempFood?.Calories ?? 0
-                    ProteinManager.shared.protein += tempFood?.Protein ?? 0
+                    HealthManager.shared.calories += tempFood?.Calories ?? 0
+                    HealthManager.shared.protein += tempFood?.Protein ?? 0
+                    HealthManager.shared.carbs += tempFood?.Carbohydrates ?? 0
+                    HealthManager.shared.sugars += tempFood?.Sugars ?? 0
                 }
             }
             catch{ print("Error decoding JSON meal: \(error.localizedDescription)")

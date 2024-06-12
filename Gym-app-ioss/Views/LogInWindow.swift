@@ -11,7 +11,7 @@ import SwiftUI
 
 struct LogInWindow: View {
     
-    
+    @EnvironmentObject var healthManager: HealthManager
     @State private var password = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
