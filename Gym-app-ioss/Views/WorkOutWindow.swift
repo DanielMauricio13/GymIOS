@@ -22,7 +22,7 @@ struct WorkOutWindow: View {
 
           
             if begginButton {
-                staringWorkWindow(todaysWork: todaysWork,exToday: $exToday ,cals: cals)
+                StaringWorkWindow(todaysWork: todaysWork,exToday: $exToday ,cals: cals)
             }else{
                 
                 VStack{

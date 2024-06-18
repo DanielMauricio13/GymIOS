@@ -156,7 +156,7 @@ struct NutritionView: View {
                                 }
                                 Spacer()
                             }
-                            Spacer()
+                            Spacer(minLength: 80)
                         }
                         
                         .padding()
