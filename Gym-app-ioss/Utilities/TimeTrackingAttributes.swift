@@ -8,10 +8,13 @@
 import Foundation
 import ActivityKit
 
-struct TimerAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        var timeRemaining: Int
-    }
+struct TimeTrackingAttributes: ActivityAttributes{
+    public typealias TimeTrackingStatus = ContentState
     
-    var totalTime: Int
+    public struct ContentState: Codable, Hashable{
+        var startTime:Date
+        var set: Int
+    }
+    var Initial: Date
+    
 }

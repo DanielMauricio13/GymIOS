@@ -26,12 +26,20 @@ struct StaringWorkWindow: View {
     @State var index = 0
     @State var set = 1
     var cals: Int
-    @State var buttonPressed = false
+    @State var finishedSet = false
+    @State var finishedRecover = false
+    
+    @State var activity: Activity<TimeTrackingAttributes>? = nil
+    @State var isTrackingTime: Bool = false
+    @State var startTime: Date? = nil
+  
 
+        
+    
     var body: some View {
-        if timeRemaining == 0 || index >= todaysWork?.exercises.count ?? 1 {
+        if timeRemaining == 0 || index >= todaysWork?.exercises.count ?? 1 {                //if strting exercise time has ended or workout is over
             VStack {
-                if index >= todaysWork?.exercises.count ?? 1 {
+                if index >= todaysWork?.exercises.count ?? 1 {                              //if workout is over
                     Spacer()
                     Text("All Done!").font(.title3).italic().bold().foregroundStyle(Color.orange).font(.title2)
                     Text("You just burned \(cals) calories 🔥").font(.title2).italic().bold().foregroundStyle(Color.red)
@@ -41,12 +49,13 @@ struct StaringWorkWindow: View {
                     } label: {
                         Text("Go Back").foregroundStyle(Color.white).font(.title2).bold().background(Rectangle().clipShape(.buttonBorder).frame(width: 100, height: 40)).padding(.top)
                     }
-                } else {
+                }                       //workout is over
+                else {
                     Text("\(todaysWork?.exercises[index].name ?? "PullUps")").font(.largeTitle).italic().bold().foregroundStyle(Color.white)
 
                     ImageView(imageURL: "https://gym-app-api-38b971084be9.herokuapp.com/images/imageName?name=\(todaysWork?.exercises[index].name ?? "bad").jpeg")
                         .frame(width: 400, height: 300)
-                    if buttonPressed == false || timeRemaining2 == 0 {
+                    if finishedSet == false ||  finishedRecover == true  {
                         HStack {
                             Text("Set \(set):").font(.title).padding(.leading).padding(.top).foregroundStyle(Color.white).bold()
                             Spacer()
@@ -60,55 +69,80 @@ struct StaringWorkWindow: View {
                                 timeRemaining = 5
                                 set = 1
                             } else {
-                                buttonPressed = true
+                                finishedSet = true
+                                finishedRecover = false
                             }
                         } label: {
                             Text("Finish Set").foregroundStyle(Color.white).font(.title2).bold().background(Rectangle().clipShape(.buttonBorder).frame(width: 100, height: 40)).padding(.top)
-                        }.onAppear {
-                            Task {
-                                await BackgroundTaskManager.shared.endLiveActivity()
-                            }
-                            buttonPressed = false
-                            timeRemaining2 = 60
-                            totalTime2 = 60
+                        }.onAppear{
+                            finishedSet = false
+                            finishedRecover = false
+                            triggerVibration()
                         }
-                    } else {
-                        VStack {
-                            Spacer()
-                            ZStack {
-                                CircularProgressView(progress: Double(totalTime2 - timeRemaining2) / Double(totalTime2))
-                                    .frame(width: 200, height: 200)
-                                Text("\(timeRemaining2)")
-                                    .font(.system(size: 100, weight: .bold, design: .monospaced))
-                                    .foregroundColor(timeRemaining2 > 30 ? .green : timeRemaining2 > 20 ? .yellow : timeRemaining2 > 10 ? .orange : .red)
-                                    .scaleEffect(timerIsRunning2 && timeRemaining2 > 0 ? 1.2 : 1.0)
-                                    .animation(.easeInOut(duration: 0.5), value: timeRemaining2)
-                            }
-                            .padding()
-                            Spacer()
-                        }.onAppear {
-                            startTimer()
-                            self.timeRemaining2 = totalTime2
-                            self.timerIsRunning2 = true
+                    }
+                    else {
+                        
+                            
+                          
+                        if let startTime {
+                            Text(startTime,style: .relative)
                         }
-                        .onReceive(timer2) { _ in
-                            if timerIsRunning2 && timeRemaining2 > 0 {
-                                timeRemaining2 -= 1
-                                Task {
-                                    await BackgroundTaskManager.shared.updateLiveActivity(timeRemaining: timeRemaining2)
+                        
+                            Button {
+                                isTrackingTime.toggle()
+                                if isTrackingTime{
+                                    startTime = .now
+                                    
+                                    let attriutes = TimeTrackingAttributes(Initial: .now)
+                                    let state = TimeTrackingAttributes.ContentState(startTime: .now, set: set - 1)
+                                    let contrent = ActivityContent(state: state, staleDate: nil)
+                                    
+                                    activity = try?  Activity<TimeTrackingAttributes>.request(attributes: attriutes, content: contrent, pushType: nil)
+                                    
+                                    
+                                    let content = UNMutableNotificationContent()
+                                    content.title = "60 Seconds and going!"
+                                    content.body = "60 Seconds of  recovery time hvae passed. Go into the next set!"
+                                    content.sound = .default
+
+                                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60), repeats: false)
+                                    let request = UNNotificationRequest(identifier: "timerNotification", content: content, trigger: trigger)
+                                    
+                                    UNUserNotificationCenter.current().add(request) { error in
+                                        if let error = error {
+                                            print("Failed to schedule notification: \(error)")
+                                        }
+                                    }
+                                    
                                 }
-                            } else if timeRemaining2 == 0 {
-                                Task {
-                                    await BackgroundTaskManager.shared.endLiveActivity()
+                                else {
+                                    
+                                    guard startTime != nil else {return}
+                                    let finalContentState = TimeTrackingAttributes.ContentState(startTime: .now, set: set - 1)
+                                    let finalContent = ActivityContent(state: finalContentState, staleDate: nil)
+                                    
+                                    Task {
+                                        await activity?.end(finalContent, dismissalPolicy: .immediate)
+                                       // cancelNotification()
+                                    }
+                                    
+                                    
+                                    self.startTime = nil
+                                    finishedRecover = true
+                                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["timerNotification"])
+                                    
                                 }
-                                triggerVibration()
+                            }label: {
+                                Text(isTrackingTime ? "Stop" : "Start").font(.title)
                             }
-                        }
+                                
+                       
                     }
                 }
                 Spacer()
             }
-        } else {
+        } 
+        else {
             VStack {
                 Spacer()
                 Text("Get Ready!\nNext Exercise is \(todaysWork?.exercises[index].name ?? "pushdowns")").font(.title).foregroundStyle(Color.white).padding(.bottom)
@@ -130,8 +164,6 @@ struct StaringWorkWindow: View {
             .onReceive(timer) { _ in
                 if self.timerIsRunning && self.timeRemaining > 0 {
                     self.timeRemaining -= 1
-                } else if timeRemaining == 0 {
-                    triggerVibration()
                 }
             }
         }
@@ -154,10 +186,6 @@ struct StaringWorkWindow: View {
             }
             .frame(width: 400, height: 300)
         }
-    }
-
-    private func startTimer() {
-        BackgroundTaskManager.shared.startTimer(withTotalTime: timeRemaining2)
     }
 
     private func triggerVibration() {
@@ -187,59 +215,11 @@ struct CircularProgressView: View {
 class BackgroundTaskManager {
     static let shared = BackgroundTaskManager()
     
-    private var activity: Activity<TimerAttributes>?
+ 
 
     private init() {}
 
-    func startTimer(withTotalTime totalTime: Int) {
-        let attributes = TimerAttributes(totalTime: totalTime)
-        let initialContentState = TimerAttributes.ContentState(timeRemaining: totalTime)
-        let content = ActivityContent(state: initialContentState, staleDate: nil)
-
-        Task {
-            activity = try? Activity<TimerAttributes>.request(
-                attributes: attributes,
-                content: content,
-                pushType: nil
-            )
-        }
-
-        scheduleBackgroundTask()
-        scheduleNotification(in: totalTime)
-    }
-
-    func updateLiveActivity(timeRemaining: Int) async {
-        guard let activity = activity else { return }
-
-        let updatedContentState = TimerAttributes.ContentState(timeRemaining: timeRemaining)
-        let content = ActivityContent(state: updatedContentState, staleDate: nil)
-        await activity.update(content)
-
-        if timeRemaining == 0 {
-            await endLiveActivity()
-            triggerVibration()
-        }
-    }
-
-    func endLiveActivity() async {
-        guard let activity = activity else { return }
-
-        let finalContentState = TimerAttributes.ContentState(timeRemaining: 0)
-        let finalContent = ActivityContent(state: finalContentState, staleDate: nil)
-        await activity.end(finalContent, dismissalPolicy: .immediate)
-    }
-
-    private func scheduleBackgroundTask() {
-        let request = BGProcessingTaskRequest(identifier: "com.yourapp.timer")
-        request.requiresNetworkConnectivity = false
-        request.requiresExternalPower = false
-
-        do {
-            try BGTaskScheduler.shared.submit(request)
-        } catch {
-            print("Failed to submit background task: \(error)")
-        }
-    }
+    
 
     private func scheduleNotification(in seconds: Int) {
         let content = UNMutableNotificationContent()

@@ -12,9 +12,10 @@ struct questionaire: View {
         Question(text: "What is your body Type?", options: ["Ectomorph", "Mesomorph", "Endomorph"], imageName: "cat" ),
             Question(text: "What is your objective?", options: ["Increase mass", "Stay fit", "Lose weight"], imageName: "cat"),
             Question(text: "Genetic gender?", options: ["Male", "Female"], imageName: "cat"),
-            Question(text: "How many days do you want to work per week?" , options: ["1", "2", "3", "4", "5" ], imageName: "cat"),
-        Question(text: "how many hours per day do you want to work?", options: ["less than 1 hour", "1 hour to 2 hours", "more than 2 hours"], imageName: "cat"),
-        Question(text: "Where will you work at?" , options: ["Home", "Gym" ], imageName: "cat"),
+            Question(text: "How many days do you want to workout per week?" , options: ["1", "2", "3", "4", "5" ], imageName: "cat"),
+        Question(text: "how many hours per day do you want to workout?", options: ["less than 1 hour", "1 hour to 2 hours", "more than 2 hours"], imageName: "cat"),
+        Question(text: "Where will you workout at?" , options: ["Home", "Gym" ], imageName: "cat"),
+        Question(text: "What is your wourkout experience", options: ["Beginner", "Intermediate", "Expert"], imageName: "cat")
         ]
     @State private var currentQuestionIndex = 0
     
@@ -69,7 +70,7 @@ struct questionaire: View {
                                       password: password,
                                       numDays: numDaysInt,
                                       numHours: questions[4].selectedOption,
-                                      whereWork: questions[5].selectedOption)
+                                      whereWork: questions[5].selectedOption, level: questions[6].selectedOption)
                         } else {
                             
                         }
@@ -111,7 +112,7 @@ struct QuestionView: View {
     var body: some View {
         
             
-        VStack {
+        ZStack {
             Text(question.text)
                 .font(.title)
                 .padding(.bottom,300).foregroundColor(.white)

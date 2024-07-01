@@ -11,43 +11,78 @@ import ActivityKit
 
 
 
-struct  PowAI_Widget: Widget {
+struct PowAI_Widget: Widget {
+    
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: TimerAttributes.self) { context in
-            // Lock screen/banner presentation
+        ActivityConfiguration(for: TimeTrackingAttributes.self) { context in
             TimerLockScreenView(context: context)
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded view
-                
-                DynamicIslandExpandedRegion(.bottom) {
-                    HStack{
-                        Text("Recovery Time Remaining ").bold().font(.title2)
-                        Text("\(context.state.timeRemaining)").bold().foregroundColor(context.state.timeRemaining > 30 ? .green : context.state.timeRemaining > 20 ? .yellow : context.state.timeRemaining > 10 ? .orange : .red)
+                DynamicIslandExpandedRegion(.trailing) {
+                    HStack {
+                        Text("Start Time:").bold().font(.title2)
+                        Text(context.state.startTime, style: .timer)
+                            .bold()
+                            .font(.title2)
+                            .foregroundColor(.accentColor) // Example of adding color
+                        
                     }
-                    
                 }
-               
+                DynamicIslandExpandedRegion(.leading){
+                    Text("hey").font(.title)
+                }
             } compactLeading: {
-                Text("TR")
+                HStack{
+                    
+                    Text(context.state.startTime,style: .timer)
+                    //Text("Set: \(context.state.startTime.timeIntervalSince())")
+                    
+                    Spacer()
+                }
             } compactTrailing: {
-                Text("\(context.state.timeRemaining)").bold().foregroundColor(context.state.timeRemaining > 30 ? .green : context.state.timeRemaining > 20 ? .yellow : context.state.timeRemaining > 10 ? .orange : .red)
+//                Text("yg")
+//                Text(context.state.startTime, style: .timer).contentMargins(0.2)
+//                    .bold()
+//                    .font(.title3)
+//                    .foregroundColor(.primary)
+//                    .padding(1)
             } minimal: {
-                Text("\(context.state.timeRemaining)").bold().foregroundColor(context.state.timeRemaining > 30 ? .green : context.state.timeRemaining > 20 ? .yellow : context.state.timeRemaining > 10 ? .orange : .red)
+                
+                Text(context.state.startTime, style: .timer)
+                    .bold()
+                    .font(.caption)
+                    .foregroundColor(.accentColor)
             }
         }
     }
+    func getTat(dta: Date)-> String {
+       // let date = dta
+        //let calendar = Calendar.current
+       
+        
+        return ""
+    }
+    
 }
+
+
 
 struct TimerLockScreenView: View {
-    let context: ActivityViewContext<TimerAttributes>
+    let context: ActivityViewContext<TimeTrackingAttributes>
 
     var body: some View {
-        VStack {
-            Text("Recovery Time Remaining").font(.title).bold()
-            Text("\(context.state.timeRemaining)")
-                .font(.largeTitle).foregroundColor(context.state.timeRemaining > 30 ? .green : context.state.timeRemaining > 20 ? .yellow : context.state.timeRemaining > 10 ? .orange : .red)
+        HStack{
+            Spacer(minLength: 20)
+            Text("Set: \(context.state.set)").font(.title)
+                .bold()
+                .foregroundColor(.red) // Example of adding color
+            Spacer(minLength: 20)
+            Text(context.state.startTime, style: .timer)
+                .font(.title)
+                .bold()
+                .foregroundColor(.accentColor) // Example of adding color
         }
-        .padding()
     }
 }
+

@@ -39,14 +39,20 @@ struct finalData: View {
     @State var sugars: Int?
     @State var DalyCaloriesBurn: Int?
     var whereWork : String
+    var level: String
+    @State var pres: Bool  = false
     
     @State var water: Double?
     
     var body: some View {
     
         if submit{
-            
-            LogInWindow().navigationBarBackButtonHidden()
+            ZStack{
+                LogInWindow().navigationBarBackButtonHidden(true)
+            }.navigationBarBackButtonHidden(true)
+        }
+        else if pres == true{
+            LoadingView()
         }
         else{
             VStack{
@@ -54,7 +60,7 @@ struct finalData: View {
                 Spacer()
                 VStack{
                     Form{
-                        Section(header: Text("Age").foregroundColor(.red)){
+                        Section(header: Text("Age").foregroundColor(age == 0 ? .red : .accentColor)){
                             TextField("Age", text: Binding<String>(
                                 get: { String() },
                                 set: { if let newValue = Int($0) { age = newValue } }
@@ -113,6 +119,7 @@ struct finalData: View {
 //                        Text("Create account \(firstName)").foregroundColor(.white).font(.title)
 //                    }
                     Button{
+                        pres = true
                         Task{ try await geminii()}
                     }label: {
                         Text("Create account \(firstName)").foregroundColor(.white).font(.title)
@@ -156,7 +163,7 @@ struct finalData: View {
         
         
             let message1 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
-            let message2 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal) working out at \(whereWork), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
+            let message2 = "a \(gender) of \(age) years with a height of \(height) \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal) working out at \(whereWork), the person is \(level) at the gym,in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
        
             let message3 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weigth of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal), in a Json file give me the exact number(not in range)  of Protein (in an Int), Calories(in an Int), sugars(in an Int), and Carbs(in an Int), BurnCalories (that that person needs to burn daily, in an int), and water(in a Double)  a day that person should consume to fulfill his goal. Do not include Important Considerations"
             let message4 = "a \(gender) of \(age) years with a height of \(heightFt),\(heightIn)  \(selectedOption2) and a weight of \(weight) \(selectedOption) with a body structure of \(bodyStructure) wants to \(goal)working out at \(whereWork), in a Json file give me a list of excercises to train every muscule and divide them in \(numDays) days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for \(numHours) hours. The format should be: day number it corresponds to, name of the excersise( in string) , repetitions(in string), number of series(an Int) and the approx calories burned (an Int). Ignore recomendations!"
@@ -169,7 +176,7 @@ struct finalData: View {
         ])
 
         let chatt = model.startChat(history: [
-            ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, in a Json file give me a list of excercises to train every muscule and divide them in 4 days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for 1 - 2  hours. The format should be: day number it corresponds to, name of the excersise, repetitions, number of series and the approx calories burned. Ignore recomendations!"),
+            ModelContent(role: "user", parts: "a male of 21 years with a height of 176 cm and a weight of 56 kg with a body structure of ectomorph wants to increase mass, teh person is expert at the gym in a Json file give me a list of excercises to train every muscule and divide them in 4 days so each muscule can be trained in their own dedicated day and have in mind that the person wants to workout for 1 - 2  hours. The format should be: day number it corresponds to, name of the excersise, repetitions, number of series and the approx calories burned. Ignore recomendations!"),
             ModelContent(role: "model", parts: "```json\n{\n  \"workout_plan\": [\n    {\n      \"day\": 1,\n      \"muscle_group\": \"Chest\",\n      \"exercises\": [\n        {\n          \"name\": \"Barbell Bench Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"Incline Dumbbell Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Decline Dumbbell Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Cable Crossovers\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Push-ups\",\n          \"reps\": As many as possible (AMRAP),\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"muscle_group\": \"Back\",\n      \"exercises\": [\n        {\n          \"name\": \"Pull-ups\",\n          \"reps\": As many as possible (AMRAP),\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Barbell Rows\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"T-Bar Row\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Lat Pulldowns\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Seated Cable Rows\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"muscle_group\": \"Legs\",\n      \"exercises\": [\n        {\n          \"name\": \"Squats\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 300-400\n        },\n        {\n          \"name\": \"Leg Press\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 200-300\n        },\n        {\n          \"name\": \"Leg Extensions\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Hamstring Curls\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Calf Raises\",\n          \"reps\": 15-20,\n          \"sets\": 3,\n          \"calories_burned\": 50-100\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"muscle_group\": \"Shoulders & Arms\",\n      \"exercises\": [\n        {\n          \"name\": \"Overhead Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        },\n        {\n          \"name\": \"Lateral Raises\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Front Raises\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Barbell Bicep Curls\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Hammer Curls\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Triceps Pushdowns\",\n          \"reps\": 12-15,\n          \"sets\": 3,\n          \"calories_burned\": 100-150\n        },\n        {\n          \"name\": \"Close-Grip Bench Press\",\n          \"reps\": 8-12,\n          \"sets\": 3,\n          \"calories_burned\": 150-200\n        }\n      ]\n    }\n  ]\n}\n```")
         ])
         
@@ -317,6 +324,18 @@ struct finalData: View {
 
 struct finalData_Previews: PreviewProvider {
     static var previews: some View {
-        finalData(firstName: "da", lastName: "dad", gender: "dad", goal: "dasda", bodyStructure: "dasda", email: "adad", password: "dsada",numDays: 5, numHours: "2", whereWork: "Gym")
+        finalData(firstName: "da", lastName: "dad", gender: "dad", goal: "dasda", bodyStructure: "dasda", email: "adad", password: "dsada",numDays: 5, numHours: "2", whereWork: "Gym", level: "Begginer")
+    }
+}
+struct LoadingView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            ProgressView("Creating your account\n this may take a minute...")
+                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                .scaleEffect(1.5, anchor: .center)
+            Spacer()
+        }
+        .background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all))
     }
 }

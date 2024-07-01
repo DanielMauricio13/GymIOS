@@ -8,8 +8,10 @@
 import UIKit
 import BackgroundTasks
 import UserNotifications
-
+import ActivityKit
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+   var activity: Activity<TimeTrackingAttributes>?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.yourapp.timer", using: nil) { task in
             self.handleBackgroundTask(task: task as! BGProcessingTask)
@@ -18,18 +20,33 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         UNUserNotificationCenter.current().delegate = self
         requestNotificationPermission()
 
+//        NotificationCenter.default.addObserver(
+//                   self,
+//                   selector: #selector(appWillTerminate),
+//                   name: UIApplication.willTerminateNotification,
+//                   object: nil
+//               )
         return true
     }
+//    func applicationWillTerminate(_ application: UIApplication) {
+//            print("AppDelegate: applicationWillTerminate - App is about to terminate.")
+//            LiveActivityManager.shared.endLiveActivity(set: 0)
+//        }
+       
+//       @objc func appWillTerminate() {
+//           LiveActivityManager.shared.endLiveActivity(set: 0)
+//       }
 
+   
     private func handleBackgroundTask(task: BGProcessingTask) {
         task.expirationHandler = {
             task.setTaskCompleted(success: false)
         }
 
-        Task {
-            await BackgroundTaskManager.shared.updateLiveActivity(timeRemaining: 60)
-            task.setTaskCompleted(success: true)
-        }
+//        Task {
+//            await BackgroundTaskManager.shared.updateLiveActivity(timeRemaining: 60)
+//            task.setTaskCompleted(success: true)
+//        }
 
         scheduleBackgroundTask()
     }
