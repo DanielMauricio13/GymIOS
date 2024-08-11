@@ -32,7 +32,7 @@ struct StaringWorkWindow: View {
     @State var activity: Activity<TimeTrackingAttributes>? = nil
     @State var isTrackingTime: Bool = false
     @State var startTime: Date? = nil
-  
+    @State var excSer: Int? = 3
 
         
     
@@ -61,23 +61,46 @@ struct StaringWorkWindow: View {
                             Spacer()
                         }
                         Text("Reps \(todaysWork?.exercises[index].reps ?? "1")").font(.title).padding(.leading).padding(.top).foregroundStyle(Color.white).bold()
-                        Button {
-                            set += 1
-                            if (set > todaysWork?.exercises[index].sets ?? 4) {
-                                index += 1
-                                totalTime = 5
-                                timeRemaining = 5
-                                set = 1
-                            } else {
-                                finishedSet = true
-                                finishedRecover = false
+                        
+                        HStack{
+                            if set + 1 > excSer ?? 9{
+                                Spacer()
                             }
-                        } label: {
-                            Text("Finish Set").foregroundStyle(Color.white).font(.title2).bold().background(Rectangle().clipShape(.buttonBorder).frame(width: 100, height: 40)).padding(.top)
-                        }.onAppear{
-                            finishedSet = false
-                            finishedRecover = false
-                            triggerVibration()
+                            if set + 1 > excSer ?? 9{
+                                Button {
+                                    set += 1
+                                    excSer! += 1
+                                    finishedSet = true
+                                    finishedRecover = false
+                                } label: {
+                                    Text("Add Set").foregroundStyle(Color.white).font(.title2).bold().background(Capsule().frame(width: 100).foregroundStyle(.red)).padding(.top)
+                                }
+                            }
+                            if set + 1 > excSer ?? 9{
+                                Spacer()
+                            }
+                            Button {
+                                set += 1
+                                if (set > excSer ?? 4) {
+                                    index += 1
+                                    totalTime = 5
+                                    timeRemaining = 5
+                                    set = 1
+                                } else {
+                                    finishedSet = true
+                                    finishedRecover = false
+                                }
+                            } label: {
+                                Text("Finish Set").foregroundStyle(Color.white).font(.title2).bold().background(Rectangle().clipShape(.buttonBorder).frame(width: 100, height: 40)).padding(.top)
+                            }.onAppear{
+                                finishedSet = false
+                                finishedRecover = false
+                                triggerVibration()
+                                excSer = todaysWork?.exercises[index].sets
+                            }
+                            if set + 1 > excSer ?? 9{
+                                Spacer()
+                            }
                         }
                     }
                     else {

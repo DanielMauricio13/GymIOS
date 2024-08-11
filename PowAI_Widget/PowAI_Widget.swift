@@ -21,16 +21,19 @@ struct PowAI_Widget: Widget {
                 // Expanded view
                 DynamicIslandExpandedRegion(.trailing) {
                     HStack {
-                        Text("Start Time:").bold().font(.title2)
+                        //Text("Time So far:").bold().font(.title2)
                         Text(context.state.startTime, style: .timer)
                             .bold()
                             .font(.title2)
-                            .foregroundColor(.accentColor) // Example of adding color
+                            .foregroundColor(.red) // Example of adding color
                         
                     }
                 }
+                DynamicIslandExpandedRegion(.center){
+                    Text("Time So far:").bold().font(.title2)
+                }
                 DynamicIslandExpandedRegion(.leading){
-                    Text("hey").font(.title)
+                    Text("Resting...").font(.title)
                 }
             } compactLeading: {
                 HStack{

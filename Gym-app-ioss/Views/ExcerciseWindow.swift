@@ -51,7 +51,7 @@ struct ExcerciseWindow: View {
                         Button(action: {whichWin = 0}) {
                             Image(systemName: "house")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(whichWin == 0 ? Color .red :Color.white)
                                 .background(Color.black)
                                 .cornerRadius(10)
                         }
@@ -60,7 +60,7 @@ struct ExcerciseWindow: View {
                         Button(action: {whichWin = 1}) {
                             Image(systemName: "leaf")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(whichWin == 1 ? Color .red :Color.white)
                                 .background(Color.black)
                                 .cornerRadius(10)
                         }
@@ -69,7 +69,7 @@ struct ExcerciseWindow: View {
                         Button(action: {whichWin = 2}) {
                             Image(systemName: "flame")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(whichWin == 2 ? Color .red :Color.white)
                                 .background(Color.black)
                                 .cornerRadius(10)
                         }
@@ -83,7 +83,7 @@ struct ExcerciseWindow: View {
                         }) {
                             Image(systemName: "gear")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(whichWin == 3 ? Color .red :Color.white)
                                 .background(Color.black)
                                 .cornerRadius(10)
                         }
