@@ -30,30 +30,35 @@ struct LogInWindow: View {
         } else {
             NavigationView {
                 ZStack {
-                    Color.black.ignoresSafeArea()
-                    Circle().scale(1.7).foregroundColor(.white.opacity(0.4))
-                    Circle().scale(1.35).foregroundColor(.red)
-                    Circle().scale(1).foregroundColor(.black)
-                    Circle().scale(1).foregroundColor(.white.opacity(0.4))
-                    Circle().scale(1).foregroundColor(.black.opacity(0.7))
+                    LinearGradient(colors: [Color.cyan.opacity(0.7),Color.purple.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
+//                   
+//                    Circle().scale(1.7).foregroundColor(.white.opacity(0.4))
+//                    Circle().scale(1.35).foregroundColor(.red)
+//                    Circle().scale(1).foregroundColor(.black)
+//                    Circle().scale(1).foregroundColor(.white.opacity(0.4))
+//                    Circle().scale(1).foregroundColor(.black.opacity(0.7))
+                    Circle().frame(width: 300).foregroundStyle(Color.blue.opacity(0.3)).blur(radius: 10).offset(x: -100, y: -150)
+                    Circle().frame(width: 300).foregroundStyle(Color.purple.opacity(0.3)).blur(radius: 10).offset(x: 150, y: 250)
+                    RoundedRectangle(cornerRadius: 30,style: .continuous).frame(width: 500,height: 500).foregroundStyle(LinearGradient(colors: [Color.purple, .mint], startPoint: .top, endPoint: .bottom)).offset(x:300,y: -200).blur(radius: 30).rotationEffect(.degrees(170))
+                    RoundedRectangle(cornerRadius: 20).fill(.ultraThinMaterial).frame(width: 350, height:350)
                     VStack {
-                        Text("Pow AI").font(.largeTitle).bold().padding(.bottom).foregroundColor(.white).padding(51)
+                        Text("Pow AI").font(.system(size: 48,weight: .bold,design: .rounded)).foregroundStyle(LinearGradient(colors: [.accentColor,.purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                         TextField("Email", text: $username).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongUsername)).foregroundColor(.white).font(.headline)
                         SecureField("Password", text: $password).foregroundStyle(Color.white).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongPassword)).accentColor(.white).foregroundColor(.white).font(.headline)
                         if wrongUsername == 1 {
                             NavigationLink(destination: createUserWindow()) {
-                                Text("Wrongh email or password. Recover?").underline().foregroundColor(.red)
+                                Text("Wrong email or password! Recover?").underline().foregroundColor(.red)
                             }.padding(.top)
                         }
                         Button {
                             self.username = username.uppercased()
                             authenticateUser(username, password)
                         } label: {
-                            Text("LogIn").padding().foregroundColor(.white).frame(width: 300, height: 50).background(Color.blue).cornerRadius(10)
+                            Text("Log In").padding().foregroundColor(.white).frame(width: 300, height: 50).background(Color.blue).cornerRadius(10)
                         }
                         
                         NavigationLink(destination: createUserWindow()) {
-                            Text("New? Create User").foregroundColor(.white)
+                            Text("New? Create Account").foregroundColor(.white)
                         }.padding(.top)
                     }
                 }.navigationBarBackButtonHidden()
