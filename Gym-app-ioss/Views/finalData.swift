@@ -55,6 +55,10 @@ struct finalData: View {
             LoadingView()
         }
         else{
+            ZStack{
+                LinearGradient(colors: [Color.blue.opacity(0.7),Color.purple.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
+                Circle().frame(width: 300).foregroundStyle(Color.blue.opacity(0.3)).blur(radius: 10).offset(x: -100, y: -150)
+                Circle().frame(width: 300).foregroundStyle(Color.white.opacity(0.3)).blur(radius: 10).offset(x: 150, y: 250)
             VStack{
                 Text("Final data").font(.title).foregroundColor(.white).bold()
                 Spacer()
@@ -91,7 +95,7 @@ struct finalData: View {
                                 }
                                 .pickerStyle(MenuPickerStyle())
                             }
-                          
+                            
                         }.foregroundColor(.white).bold().listRowBackground(Color.gray)
                         Section(header: Text("Weight ").foregroundStyle(Color.red)){
                             HStack{
@@ -110,14 +114,14 @@ struct finalData: View {
                             
                             
                         }.foregroundColor(.white).bold().listRowBackground(Color.gray)
-                       
-                    }
+                        
+                    }.scrollContentBackground(.hidden)
                     
-//                    Button{
-//                        Task{ try await submitData()}
-//                    }label: {
-//                        Text("Create account \(firstName)").foregroundColor(.white).font(.title)
-//                    }
+                    //                    Button{
+                    //                        Task{ try await submitData()}
+                    //                    }label: {
+                    //                        Text("Create account \(firstName)").foregroundColor(.white).font(.title)
+                    //                    }
                     Button{
                         pres = true
                         Task{ try await geminii()}
@@ -127,6 +131,8 @@ struct finalData: View {
                     
                 }
             }
+            
+        }
         }
     }
     

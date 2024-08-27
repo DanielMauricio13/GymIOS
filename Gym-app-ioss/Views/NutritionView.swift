@@ -84,9 +84,11 @@ struct NutritionView: View {
                                                 }
                                                 .foregroundColor(.white)
                                                 .bold()
-                                            }.frame(width: 450,height: 500)
+                                            }
+                                            .frame(width: 450,height: 500)
                                                 .foregroundColor(.white)
                                                 .bold()
+                                                
                                         }
                                         else{
                                             Form {
@@ -113,7 +115,9 @@ struct NutritionView: View {
                                                     .foregroundColor(.white)
                                             }
                                             .foregroundColor(.white)
-                                        }.frame(width: 450,height: 300)
+                                            .scrollContentBackground(.hidden)
+                                        } .scrollContentBackground(.hidden)
+                                                .frame(width: 450,height: 300)
                                             .foregroundColor(.white)
                                             .bold()
                                         
@@ -161,12 +165,14 @@ struct NutritionView: View {
                         
                         .padding()
                         .navigationTitle("Add Food")
+                        .scrollContentBackground(.hidden)
                         .onAppear {
                             items = persistenceManager.loadItems()
                             
                         }
                     }
-                }else{
+                }
+        else{
             VStack{
                 HStack{
                     Spacer().frame(width: 20)
@@ -175,11 +181,11 @@ struct NutritionView: View {
                     Button(action: {
                         buttonPressed = true
                     }) {
-                        Image(systemName: "pencil")
+                        Image(systemName: "plus.circle")
                             .foregroundColor(.white)
                             .font(.title)
                             .frame(width: 50, height: 80)
-                            .background(Color.red)
+                            
                             .clipShape(Circle())
                     }
                     Spacer().frame(width: 20)

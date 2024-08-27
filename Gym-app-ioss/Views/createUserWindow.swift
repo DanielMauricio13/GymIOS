@@ -24,26 +24,28 @@ struct createUserWindow: View {
         else {
             NavigationView{
                 ZStack{
-                    Color.black.ignoresSafeArea()
+                    LinearGradient(colors: [Color.cyan.opacity(0.7),Color.black.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
+                    Circle().frame(width: 300).foregroundStyle(Color.blue.opacity(0.3)).blur(radius: 10).offset(x: -100, y: 150)
+                    Circle().frame(width: 300).foregroundStyle(Color.purple.opacity(0.3)).blur(radius: 10).offset(x: 150, y: -250)
                     VStack{
-                        Text("Create Account").font(.largeTitle).foregroundColor(.white).padding(.top)
+                        Text("Create Account").foregroundColor(.white).padding(.top).font(.system(size: 35, weight: .bold, design: .rounded))
                         Form{
                             Section(header: Text("Name")) {
-                                TextField("First Name", text: $firstName).listRowBackground(Color.gray).foregroundColor(.white).cornerRadius(10)
+                                TextField("First Name", text: $firstName).listRowBackground(Color.white.opacity(0.4)).foregroundColor(.white).cornerRadius(10)
                                 
-                                TextField("Last Name", text: $lastName).listRowBackground(Color.gray).foregroundColor(.white)
+                                TextField("Last Name", text: $lastName).listRowBackground(Color.white.opacity(0.4)).foregroundColor(.white)
                                 
                             }
                             Section(header: Text("Email"), footer: Text("Email already registered").opacity(CGFloat(wrongEmail)).foregroundStyle(Color.red)){
-                                TextField("Email", text: $email).listRowBackground(Color.gray).foregroundColor(.white).cornerRadius(10).listRowBackground(Rectangle().clipShape(.capsule).border(Color.red, width: CGFloat(wrongEmail)))
+                                TextField("Email", text: $email).listRowBackground(Color.white.opacity(0.4)).foregroundColor(.white).cornerRadius(10).listRowBackground(Rectangle().clipShape(.capsule).border(Color.red, width: CGFloat(wrongEmail)))
                             }
                             
                             Section(header: Text("Password"), footer: Text("Passwords do not match or is empty").opacity(CGFloat(wrongPassword)).foregroundStyle(Color.red)){
-                                SecureField("Password", text: $password).listRowBackground(Color.gray).foregroundColor(.white)
-                                SecureField("Confirm password", text: $confirmPassword).listRowBackground(Color.gray).foregroundColor(.white)
+                                SecureField("Password", text: $password).listRowBackground(Color.white.opacity(0.4)).foregroundColor(.white)
+                                SecureField("Confirm password", text: $confirmPassword).listRowBackground(Color.white.opacity(0.4)).foregroundColor(.white)
                             }
                             
-                        }.cornerRadius(10)
+                        }.scrollContentBackground(.hidden)
                         Button{
                             Task{
                                 try await checkEmail(self.email)

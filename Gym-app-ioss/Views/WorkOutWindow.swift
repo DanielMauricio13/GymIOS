@@ -30,7 +30,7 @@ struct WorkOutWindow: View {
                         
                         
                         
-                        Text("Today is \(todaysWork?.muscle_group ?? "Failed to achieve")").font(.largeTitle).foregroundStyle(Color.red)
+                    Text("Today is \(todaysWork?.muscle_group ?? "Failed to achieve")").font(.system(size: 35, weight: .bold,design: .rounded))
                         
                     
                     

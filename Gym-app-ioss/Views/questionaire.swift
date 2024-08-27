@@ -40,7 +40,8 @@ struct questionaire: View {
         
         NavigationView {
             ZStack{
-                Color.black.ignoresSafeArea()
+                LinearGradient(colors: [Color.orange.opacity(0.7),Color.gray.opacity(0.9)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
+                
                 VStack {
                   
                     

@@ -20,17 +20,15 @@ struct MainWindow2: View {
             ExcerciseWindow(mainUser: mainUser,userFullWork: self.userFullWork)
         }
         else{ ZStack {
-            Color.black.edgesIgnoringSafeArea(.all) // Set background color to black
+            LinearGradient(colors: [Color.black.opacity(0.7),Color.red.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
                         
             VStack {
                 
                 Text("Welcome \(mainUser?.firstName ?? "User")")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .shadow(color: .white, radius: 20)
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
                 Spacer().frame(height: 150)
                 Button{
-                    buttomPressed=true
+                    buttomPressed = true
                 }
             label:{
                 (Text("Begin")

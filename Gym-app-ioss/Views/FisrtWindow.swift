@@ -32,6 +32,7 @@ struct FisrtWindow: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
+                .fontDesign(.rounded)
                 .foregroundColor(.white)
                 .italic()
             
@@ -50,7 +51,7 @@ struct FisrtWindow: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding()
-                        .foregroundColor(.red)
+                        .foregroundStyle(LinearGradient(colors: [.white,.red], startPoint: .leading, endPoint: .trailing))
                         .italic()
                         .shadow(color: .red, radius: 30,y: 1)
                         .underline()
@@ -111,7 +112,7 @@ struct FisrtWindow: View {
             VStack(alignment: .leading) {
                 HStack{
                     Text(item.title)
-                        .font(.headline)
+                        .font(.system(size: 20,weight: .semibold, design: .rounded))
                         .lineLimit(1) // Limit title to one line
                         .truncationMode(.tail) // Truncate if it’s too long
                         .frame(maxWidth: .infinity, alignment: .leading) // Ensure full width

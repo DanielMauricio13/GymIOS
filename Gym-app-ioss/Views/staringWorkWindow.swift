@@ -174,7 +174,7 @@ struct StaringWorkWindow: View {
                         .frame(width: 200, height: 200)
                     Text("\(timeRemaining)")
                         .font(.system(size: 100, weight: .bold, design: .monospaced))
-                        .foregroundColor(timeRemaining > 3 ? .green : timeRemaining > 2 ? .yellow : .red)
+                        .foregroundColor(timeRemaining > 3 ? .cyan : timeRemaining > 2 ? .yellow : .red)
                         .scaleEffect(timerIsRunning && timeRemaining > 0 ? 1.2 : 1.0)
                         .animation(.easeInOut(duration: 0.5), value: timeRemaining)
                 }
