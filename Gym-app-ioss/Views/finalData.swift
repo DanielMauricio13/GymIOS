@@ -7,7 +7,7 @@
 
 import SwiftUI
 import GoogleGenerativeAI
-
+import RiveRuntime
 struct finalData: View {
     let firstName: String
     let lastName:String
@@ -44,6 +44,13 @@ struct finalData: View {
     
     @State var water: Double?
     
+    @State private var selectedWeightUnit = "Kg"
+       @State private var selectedHeightUnit = "cm"
+       let weightOptions = ["Kg", "lb"]
+       let heightOptions = ["cm", "Ft + in"]
+       
+      
+    
     var body: some View {
     
         if submit{
@@ -59,63 +66,94 @@ struct finalData: View {
                 LinearGradient(colors: [Color.blue.opacity(0.7),Color.purple.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
                 Circle().frame(width: 300).foregroundStyle(Color.blue.opacity(0.3)).blur(radius: 10).offset(x: -100, y: -150)
                 Circle().frame(width: 300).foregroundStyle(Color.white.opacity(0.3)).blur(radius: 10).offset(x: 150, y: 250)
+                RiveViewModel(fileName: "shapes").view().ignoresSafeArea().blur(radius: 30)
             VStack{
-                Text("Final data").font(.title).foregroundColor(.white).bold()
+                Text("Final data").font(.title).foregroundStyle(LinearGradient(colors: [.accentColor,.purple], startPoint: .topLeading, endPoint: .bottomTrailing)).bold().fontDesign(.rounded).shadow(color: .blue, radius: 10)
                 Spacer()
                 VStack{
-                    Form{
-                        Section(header: Text("Age").foregroundColor(age == 0 ? .red : .accentColor)){
-                            TextField("Age", text: Binding<String>(
-                                get: { String() },
-                                set: { if let newValue = Int($0) { age = newValue } }
-                            )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                        }.foregroundColor(.white).bold()
-                        Section(header: Text("Height").foregroundStyle(Color.red)){
-                            HStack{
-                                if(selectedOption2 == "cm"){
-                                    TextField("Height", text: Binding<String>(
-                                        get: { String() },
-                                        set: { if let newValue = Int($0) { height = newValue } }
-                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                                }else{
-                                    TextField("Ft", text: Binding<String>(
-                                        get: { String() },
-                                        set: { if let newValue = Int($0) { heightFt = newValue } }
-                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                                    TextField("in", text: Binding<String>(
-                                        get: { String() },
-                                        set: { if let newValue = Int($0) { heightIn = newValue } }
-                                    )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                                }
-                                Picker("", selection: $selectedOption2) {
-                                    ForEach(optionsw, id: \.self) { option in
-                                        Text(option)
+                    Form {
+                                    // AGE SECTION
+                                    Section(header: Text("Age").foregroundColor(age == 0 ? .red : .accentColor)) {
+                                        TextField("Age", text: Binding<String>(
+                                            get: { age == 0 ? "" : String(age) },
+                                            set: { age = Int($0) ?? 0 }
+                                        ))
+                                        .keyboardType(.numberPad)
+                                        .listRowBackground(Color.gray)
                                     }
-                                    
-                                }
-                                .pickerStyle(MenuPickerStyle())
-                            }
-                            
-                        }.foregroundColor(.white).bold().listRowBackground(Color.gray)
-                        Section(header: Text("Weight ").foregroundStyle(Color.red)){
-                            HStack{
-                                TextField("Weight", text: Binding<String>(
-                                    get: { String() },
-                                    set: { if let newValue = Int($0) { weight = newValue } }
-                                )).keyboardType(.numberPad).listRowBackground(Color.gray)
-                                Picker("", selection: $selectedOption) {
-                                    ForEach(options, id: \.self) { option in
-                                        Text(option)
+
+                                    // HEIGHT SECTION
+                                    Section(header: Text("Height").foregroundColor(.red)) {
+                                        HStack {
+                                            if selectedHeightUnit == "cm" {
+                                                TextField("Height (cm)", text: Binding<String>(
+                                                    get: { height == 0 ? "" : String(height) },
+                                                    set: { height = Int($0) ?? 0 }
+                                                ))
+                                                .keyboardType(.numberPad)
+                                                .listRowBackground(Color.gray)
+                                            } else {
+                                                TextField("Ft", text: Binding<String>(
+                                                    get: { heightFt == 0 ? "" : String(heightFt) },
+                                                    set: { heightFt = Int($0) ?? 0 }
+                                                ))
+                                                .keyboardType(.numberPad)
+                                                .listRowBackground(Color.gray)
+
+                                                TextField("In", text: Binding<String>(
+                                                    get: { heightIn == 0 ? "" : String(heightIn) },
+                                                    set: { heightIn = Int($0) ?? 0 }
+                                                ))
+                                                .keyboardType(.numberPad)
+                                                .listRowBackground(Color.gray)
+                                            }
+
+                                            Picker("", selection: $selectedHeightUnit) {
+                                                ForEach(heightOptions, id: \.self) { option in
+                                                    Text(option)
+                                                }
+                                            }
+                                            .pickerStyle(MenuPickerStyle())
+                                        }
+                                        .onChange(of: selectedHeightUnit) {
+                                            if selectedHeightUnit == "cm" {
+                                                // Convert ft + in to cm
+                                                height = Int(Double(heightFt) * 30.48 + Double(heightIn) * 2.54)
+                                            } else {
+                                                // Convert cm to ft + in
+                                                heightFt = height / 30
+                                                heightIn = Int(Double(height).truncatingRemainder(dividingBy: 30) / 2.54)
+                                            }
+                                        }
                                     }
-                                    
+
+                                    // WEIGHT SECTION
+                                    Section(header: Text("Weight").foregroundColor(.red)) {
+                                        HStack {
+                                            TextField("Weight", text: Binding<String>(
+                                                get: { weight == 0 ? "" : String(weight) },
+                                                set: { weight = Int($0) ?? 0 }
+                                            ))
+                                            .keyboardType(.numberPad)
+                                            .listRowBackground(Color.gray)
+
+                                            Picker("", selection: $selectedWeightUnit) {
+                                                ForEach(weightOptions, id: \.self) { option in
+                                                    Text(option)
+                                                }
+                                            }
+                                            .pickerStyle(MenuPickerStyle())
+                                        }
+                                        .onChange(of: selectedWeightUnit) {
+                                            if selectedWeightUnit == "Kg" {
+                                                weight = Int(Double(weight) / 2.205) // Convert lbs → kg
+                                            } else {
+                                                weight = Int(Double(weight) * 2.205) // Convert kg → lbs
+                                            }
+                                        }
+                                    }
                                 }
-                                .pickerStyle(MenuPickerStyle()) // Dropdown style
-                            }
-                            
-                            
-                        }.foregroundColor(.white).bold().listRowBackground(Color.gray)
-                        
-                    }.scrollContentBackground(.hidden)
+                                .scrollContentBackground(.hidden)
                     
                     //                    Button{
                     //                        Task{ try await submitData()}
@@ -126,7 +164,7 @@ struct finalData: View {
                         pres = true
                         Task{ try await geminii()}
                     }label: {
-                        Text("Create account \(firstName)").foregroundColor(.white).font(.title)
+                        Text("Create account").foregroundColor(.white).font(.title).fontDesign(.rounded).bold()
                     }
                     
                 }
@@ -222,7 +260,7 @@ struct finalData: View {
                 
                 let fullTrainings = fullTraining(id: nil, email: self.email, userExcersises: excersise!)
                 
-                print(fullTrainings)
+                
                 
                 try await HttpClient.shared.sendData(to: url, object: user, httpMethod: HttpMethods.POST.rawValue)
                 
@@ -308,14 +346,15 @@ struct finalData: View {
                 print("Error converting JSON string to data")
                 return
             }
-            print(trimmedResponse)
+//            print(trimmedResponse)
             
             // Decode the JSON data
             let jsonDecoder = JSONDecoder()
             do {
                 let workoutPlan = try jsonDecoder.decode(userExcersise.self, from: jsonData)
                 excersise = workoutPlan
-                print(workoutPlan)
+                print("success workout plan")
+//                print(workoutPlan)
                 
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
@@ -335,13 +374,16 @@ struct finalData_Previews: PreviewProvider {
 }
 struct LoadingView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            ProgressView("Creating your account\n this may take a minute...")
-                .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                .scaleEffect(1.5, anchor: .center)
-            Spacer()
+        ZStack{
+            Rectangle().foregroundStyle(Color.black).ignoresSafeArea()
+            VStack {
+                Spacer()
+                ProgressView("Creating your account\n this may take a minute...").foregroundStyle(Color.white)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(1.5, anchor: .center)
+                Spacer()
+            }
         }
-        .background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all))
+        
     }
 }

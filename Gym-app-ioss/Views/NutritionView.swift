@@ -7,7 +7,7 @@
 
 import SwiftUI
 import GoogleGenerativeAI
-
+import RiveRuntime
 struct NutritionView: View {
     @State var buttonPressed = false
     @State var buttonPressed2 = false
@@ -317,7 +317,7 @@ func geminii() async throws {
     let config = GenerationConfig(
       temperature: 1,
       topP: 0.95,
-      topK: 64,
+      topK: 40,
       maxOutputTokens: 8192,
       responseMIMEType: "text/plain"
     )
@@ -328,15 +328,9 @@ func geminii() async throws {
     
     
     let model = GenerativeModel(
-      name: "gemini-1.5-flash-latest",
+      name: "gemini-2.0-flash",
       apiKey: apiKey,
-      generationConfig: config,
-      safetySettings: [
-        SafetySetting(harmCategory: .harassment, threshold: .blockMediumAndAbove),
-        SafetySetting(harmCategory: .hateSpeech, threshold: .blockMediumAndAbove),
-        SafetySetting(harmCategory: .sexuallyExplicit, threshold: .blockMediumAndAbove),
-        SafetySetting(harmCategory: .dangerousContent, threshold: .blockMediumAndAbove)
-      ]
+      generationConfig: config
     )
     
     
@@ -345,13 +339,23 @@ func geminii() async throws {
     
     
     let chat = model.startChat(history: [
-      ModelContent(role: "user", parts: "A user ate today 1 portion of banana, give me in a Json file the number of proteins(return int), calories(return int), sugars(return int), and carbohydrates(return an int)"),
-      ModelContent(role: "model", parts: "```json\n{\n   \"Name\" : \"Banana\"\n    \"Protein\":  1,\n    \"Calories\": 105,\n    \"Sugars\": 14,\n    \"Carbohydrates\": 27\n  }\n}\n```\n")
+      ModelContent(
+        role: "user",
+        parts: [
+          .text("you are gonna behave as a nutritionist. resposnd to this \"A user ate today 1 portion of banana, give me in a Json file the Name(return string) number of Protein(return int), Calories(return int), Sugars(return int), and Carbohydrates(return an int)\"\" skip the notes if no value found replace with 0 no comments")
+        ]
+      ),
+      ModelContent(
+        role: "model",
+        parts: [
+          .text("```json\n{\n  \"Name\": \"Banana (1 portion)\",\n  \"Protein\": 1,\n  \"Calories\": 105,\n  \"Sugars\": 14,\n  \"Carbohydrates\": 27\n}\n```\n")
+        ]
+      )
     ])
   
     Task {
         do {
-            let message1 = "A user ate today \(self.number) \(self.quantity) of \(foodName), give me in a Json file and all integers the number of proteins(int), calories(int), sugars(int), and carbohydrates(int)"
+            let message1 = "A user ate today \(self.number) \(self.quantity) of \(foodName), give me in a Json file the Name(return string) and all integers the number of Protein(int), Calories(int), Sugars(int), and Carbohydrates(int)"
             let response1 = try await chat.sendMessage(message1)
             try await extractFood(from: response1.text ?? "")
         } catch {
@@ -370,7 +374,7 @@ func geminii() async throws {
 func extractFood(from response: String) async throws{
     // Remove the code block indicators from the JSON string
     var trimmedResponse = response.replacingOccurrences(of: "```json", with: "")
-    print(trimmedResponse)
+    
     trimmedResponse = trimmedResponse.replacingOccurrences(of: "```", with: "")
     trimmedResponse = trimmedResponse.trimmingCharacters(in: .whitespacesAndNewlines)
     

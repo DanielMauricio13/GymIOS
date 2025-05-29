@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import RiveRuntime
 struct questionaire: View {
     @State private var questions: [Question] = [
         Question(text: "What is your body Type?", options: ["Ectomorph", "Mesomorph", "Endomorph"], imageName: "cat" ),
@@ -40,8 +40,8 @@ struct questionaire: View {
         
         NavigationView {
             ZStack{
-                LinearGradient(colors: [Color.orange.opacity(0.7),Color.gray.opacity(0.9)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
-                
+                LinearGradient(colors: [Color.red.opacity(0.7),Color.gray.opacity(0.9)],startPoint: .topLeading,endPoint: .bottomTrailing).ignoresSafeArea()
+                RiveViewModel(fileName: "shapes").view().ignoresSafeArea().blur(radius: 30)
                 VStack {
                   
                     
@@ -51,12 +51,12 @@ struct questionaire: View {
                             Image("Body-Set") // Replace with the actual name of your image
                                             .resizable() // Makes the image resizable
                                             .aspectRatio(contentMode: .fit) // Maintains the aspect ratio
-                                            .frame(width: 300, height: 200) // Sets the frame size
+                                            .frame(width: 280, height: 200) // Sets the frame size
                                             .clipShape(Rectangle()) // Optionally clips the image to a circle
                                             .overlay(
                                                 Rectangle().stroke(Color.white, lineWidth: 1) // Adds a border to the image
-                                            )
-                                            .shadow(radius: 10)
+                                            ).border(Color.black,width: 2)
+                                            .shadow(radius: 40)
                         }
                         QuestionView(question: $questions[currentQuestionIndex], nextQuestion: nextQuestion)
                         
@@ -114,26 +114,53 @@ struct QuestionView: View {
         
             
         ZStack {
-            Text(question.text)
-                .font(.title)
-                .padding(.bottom,300).foregroundColor(.white)
             
-            HStack{
-            ForEach(question.options, id: \.self) { option in
-                Button(action: {
-                    question.selectedOption = option // Store the selected option
-                    nextQuestion()
-                }) {
-                    Text(option)
-                        .font(.headline)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
+            if(question.options.count <= 3){
+                Text(question.text)
+                    .font(.title)
+                    .padding(.bottom,300).foregroundStyle(LinearGradient(colors: [.white.opacity(0.8),.purple], startPoint: .topLeading, endPoint: .bottomTrailing)).bold().fontDesign(.rounded)
+                HStack{
+                    ForEach(question.options, id: \.self) { option in
+                        Button(action: {
+                            question.selectedOption = option // Store the selected option
+                            nextQuestion()
+                        }) {
+                            Text(option)
+                                .font(.headline)
+                                .padding()
+                                .foregroundColor(.white)
+                                .frame(width: 110, height: 90, alignment: .center)
+                                .background(RoundedRectangle(cornerRadius: 50).frame(width: 110, height: 50, alignment: .center).foregroundStyle( LinearGradient(colors: [Color.orange.opacity(0.7),Color.red.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing)))
+                            
+                        }
+                        .padding(.bottom, 10)
+                    }
                 }
-                .padding(.bottom, 10)
-            }
         }
+            else {
+              
+                
+                VStack(spacing: 1){
+                    Text(question.text)
+                        .font(.title)
+                        .padding().foregroundStyle(LinearGradient(colors: [.white.opacity(0.8),.purple], startPoint: .topLeading, endPoint: .bottomTrailing)).bold().fontDesign(.rounded).frame(height: 150)
+                    ForEach(question.options, id: \.self) { option in
+                        Button(action: {
+                            question.selectedOption = option // Store the selected option
+                            nextQuestion()
+                        }) {
+                            Text(option)
+                                .font(.headline)
+                                .padding()
+                                .foregroundColor(.white)
+                                .frame(width: 110, height: 90, alignment: .center)
+                                .background(RoundedRectangle(cornerRadius: 50).frame(width: 110, height: 50, alignment: .center).foregroundStyle( LinearGradient(colors: [Color.orange.opacity(0.7),Color.red.opacity(0.7)],startPoint: .topLeading,endPoint: .bottomTrailing)))
+                            
+                        }
+                        .padding(.bottom, 10)
+                    }
+                }
+            }
             }.navigationBarBackButtonHidden()
                 .padding()
         

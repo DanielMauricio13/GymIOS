@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import RiveRuntime
 
 
 struct LogInWindow: View {
@@ -41,6 +41,7 @@ struct LogInWindow: View {
                     Circle().frame(width: 300).foregroundStyle(Color.purple.opacity(0.3)).blur(radius: 10).offset(x: 150, y: 250)
                     RoundedRectangle(cornerRadius: 30,style: .continuous).frame(width: 500,height: 500).foregroundStyle(LinearGradient(colors: [Color.purple, .mint], startPoint: .top, endPoint: .bottom)).offset(x:300,y: -200).blur(radius: 30).rotationEffect(.degrees(170))
                     RoundedRectangle(cornerRadius: 20).fill(.ultraThinMaterial).frame(width: 350, height:350)
+                    RiveViewModel(fileName: "shapes").view().ignoresSafeArea().blur(radius: 30)
                     VStack {
                         Text("Pow AI").font(.system(size: 48,weight: .bold,design: .rounded)).foregroundStyle(LinearGradient(colors: [.accentColor,.purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                         TextField("Email", text: $username).padding().frame(width: 300, height: 50).background(Color.black.opacity(0.05)).cornerRadius(10).border(.red, width: CGFloat(wrongUsername)).foregroundColor(.white).font(.headline)

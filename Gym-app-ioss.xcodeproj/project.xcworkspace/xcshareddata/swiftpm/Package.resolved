@@ -1,13 +1,13 @@
 {
-  "originHash" : "4bd8b161e4f372df66299171e93768d34d50f79f85a39eb1d55f45d2c2ee61e0",
+  "originHash" : "e4e0f227a841df7f52a19763b06643ff1be05a8692d2878fbbec01bb391df6eb",
   "pins" : [
     {
       "identity" : "generative-ai-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/generative-ai-swift",
       "state" : {
-        "revision" : "54784005b57c2235a7669e0c12e8dafa68f0ca5f",
-        "version" : "0.5.4"
+        "revision" : "44b8ce120425f9cf53ca756f3434ca2c2696f8bd",
+        "version" : "0.5.6"
       }
     },
     {
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "ca66fb720d6ebb657601db5a0852b830ae310a4c",
         "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "rive-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rive-app/rive-ios.git",
+      "state" : {
+        "revision" : "1b67a9eb8e24e50615b7e4bb09f2427a9c1cd86c",
+        "version" : "6.9.0"
       }
     }
   ],

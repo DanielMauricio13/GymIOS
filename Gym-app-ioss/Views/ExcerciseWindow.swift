@@ -7,7 +7,7 @@
 
 import SwiftUI
 
- 
+import RiveRuntime
 struct ExcerciseWindow: View {
     
     var mainUser: User?
@@ -23,14 +23,14 @@ struct ExcerciseWindow: View {
             LogInWindow()
         }
         
-        // Your main content here
+       
         else{
             NavigationView {
                 ZStack{
                     Circle().frame(width: 300).foregroundStyle(Color.blue.opacity(0.3)).blur(radius: 10).offset(x: -100, y: 150).animation(.bouncy, value: 2)
                     Circle().frame(width: 300).foregroundStyle(Color.green.opacity(0.3)).blur(radius: 10).offset(x: 150, y: -250).animation(.bouncy, value: 10)
                     Circle().frame(width: 300).foregroundStyle(LinearGradient(colors: [Color.purple, .mint], startPoint: .top, endPoint: .bottom)).blur(radius: 10).offset(x: 150, y: -270).animation(.bouncy, value: 10)
-                    
+                    RiveViewModel(fileName: "shapes").view().ignoresSafeArea().blur(radius: 30).ignoresSafeArea()
                     VStack {
                         
                         if (exToday != "" && whichWin == 0){
@@ -65,7 +65,7 @@ struct ExcerciseWindow: View {
                             Button(action: {whichWin = 1}) {
                                 Image(systemName: "leaf")
                                     .padding()
-                                    .foregroundColor(whichWin == 1 ? Color .cyan :Color.white)
+                                    .foregroundColor(whichWin == 1 ? Color .green :Color.white)
                                     .background(Color.black)
                                     .cornerRadius(10)
                             }
@@ -74,7 +74,7 @@ struct ExcerciseWindow: View {
                             Button(action: {whichWin = 2}) {
                                 Image(systemName: "flame")
                                     .padding()
-                                    .foregroundColor(whichWin == 2 ? Color .cyan :Color.white)
+                                    .foregroundColor(whichWin == 2 ? Color .red :Color.white)
                                     .background(Color.black)
                                     .cornerRadius(10)
                             }
@@ -88,7 +88,7 @@ struct ExcerciseWindow: View {
                             }) {
                                 Image(systemName: "gear")
                                     .padding()
-                                    .foregroundColor(whichWin == 3 ? Color .cyan :Color.white)
+                                    .foregroundColor(whichWin == 3 ? Color .orange :Color.white)
                                     .background(Color.black)
                                     .cornerRadius(10)
                             }
@@ -100,7 +100,7 @@ struct ExcerciseWindow: View {
                         }
                         .padding()
                         .frame(height: 70) // Adjust the height of the navigation bar as needed
-                        .background(Color.cyan)
+                        .background(RoundedRectangle(cornerRadius: 30).fill(.ultraThinMaterial))
                         .edgesIgnoringSafeArea(.bottom) // Extend the navigation bar to the bottom
                     }
                 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,6 +51,8 @@
 		43CDA0302A9446C7000BCA3B /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 43CDA02F2A9446C7000BCA3B /* OpenAIKit */; };
 		43CDA0332A9446DA000BCA3B /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43CDA0322A9446DA000BCA3B /* OpenAISwift */; };
 		43CDA0372AA56D74000BCA3B /* LogedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CDA0362AA56D74000BCA3B /* LogedInUser.swift */; };
+		43D59B1D2DDA6E8500250F98 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 43D59B1C2DDA6E8500250F98 /* RiveRuntime */; };
+		43D59B1F2DDA6EA800250F98 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 43D59B1E2DDA6EA800250F98 /* RiveRuntime */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,10 @@
 		43CDA0362AA56D74000BCA3B /* LogedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogedInUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		43D59B152DDA6C0000250F98 /* RiveAssets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = RiveAssets; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		43C3938B2C1F95EF00060774 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -127,6 +133,7 @@
 			files = (
 				43C393932C1F95EF00060774 /* SwiftUI.framework in Frameworks */,
 				43C393912C1F95EF00060774 /* WidgetKit.framework in Frameworks */,
+				43D59B1F2DDA6EA800250F98 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D59B1D2DDA6E8500250F98 /* RiveRuntime in Frameworks */,
 				43C393872C14DEB500060774 /* KeychainAccess in Frameworks */,
 				43C27C082BF2D5EC00A73F0F /* GoogleGenerativeAI in Frameworks */,
 				43CDA0332A9446DA000BCA3B /* OpenAISwift in Frameworks */,
@@ -186,6 +194,7 @@
 		43CDA0072A8C479C000BCA3B /* Gym-app-ioss */ = {
 			isa = PBXGroup;
 			children = (
+				43D59B152DDA6C0000250F98 /* RiveAssets */,
 				4376F40A2C03F49300937885 /* Info.plist */,
 				43CDA0082A8C479C000BCA3B /* Gym_app_iossApp.swift */,
 				43CDA0212A8D852E000BCA3B /* Utilities */,
@@ -296,12 +305,16 @@
 			dependencies = (
 				43C3939D2C1F95F000060774 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				43D59B152DDA6C0000250F98 /* RiveAssets */,
+			);
 			name = "Gym-app-ioss";
 			packageProductDependencies = (
 				43CDA02F2A9446C7000BCA3B /* OpenAIKit */,
 				43CDA0322A9446DA000BCA3B /* OpenAISwift */,
 				43C27C072BF2D5EC00A73F0F /* GoogleGenerativeAI */,
 				43C393862C14DEB500060774 /* KeychainAccess */,
+				43D59B1C2DDA6E8500250F98 /* RiveRuntime */,
 			);
 			productName = "Gym-app-ioss";
 			productReference = 43CDA0052A8C479C000BCA3B /* Gym-app-ioss.app */;
@@ -315,7 +328,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					43C3938D2C1F95EF00060774 = {
 						CreatedOnToolsVersion = 15.4;
@@ -339,6 +352,7 @@
 				43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				43C393852C14DEB500060774 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				439EF2B12DD933E300BC3034 /* XCRemoteSwiftPackageReference "rive-ios" */,
 			);
 			productRefGroup = 43CDA0062A8C479C000BCA3B /* Products */;
 			projectDirPath = "";
@@ -438,7 +452,6 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PowAI_Widget/Info.plist;
@@ -470,7 +483,6 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PowAI_Widget/Info.plist;
@@ -527,6 +539,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -588,6 +601,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -612,13 +626,11 @@
 		43CDA0142A8C479D000BCA3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gym-app-ioss/Preview Content\"";
-				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gym-app-ioss/Info.plist";
@@ -631,6 +643,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,13 +664,11 @@
 		43CDA0152A8C479D000BCA3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gym-app-ioss/Preview Content\"";
-				DEVELOPMENT_TEAM = 39VNKU5KDP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Gym-app-ioss/Info.plist";
@@ -670,6 +681,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -720,6 +732,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		439EF2B12DD933E300BC3034 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.2;
+			};
+		};
 		43C27C062BF2D5EC00A73F0F /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/generative-ai-swift";
@@ -774,6 +794,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 43CDA0312A9446DA000BCA3B /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		43D59B1C2DDA6E8500250F98 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439EF2B12DD933E300BC3034 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+		43D59B1E2DDA6EA800250F98 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 439EF2B12DD933E300BC3034 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
